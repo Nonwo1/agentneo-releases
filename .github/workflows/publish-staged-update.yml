@@ -1,0 +1,70 @@
+name: Publish staged AgentNEO update
+
+on:
+  push:
+    paths:
+      - 'release-staging/**'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild and verify staged update
+        shell: python
+        run: |
+          import base64, hashlib, json, pathlib, shutil
+          root = pathlib.Path('.')
+          staged_root = root / 'release-staging'
+          if not staged_root.exists():
+              raise SystemExit(0)
+          published = False
+          for d in sorted(p for p in staged_root.iterdir() if p.is_dir()):
+              meta_file = d / 'publish.json'
+              if not meta_file.exists():
+                  continue
+              meta = json.loads(meta_file.read_text(encoding='utf-8'))
+              version = str(meta['version'])
+              expected = str(meta['sha256']).lower()
+              parts = sorted(d.glob('part-*.b64'))
+              if not parts:
+                  raise RuntimeError(f'No staged parts for {version}')
+              encoded = ''.join(p.read_text(encoding='ascii').strip() for p in parts)
+              payload = base64.b64decode(encoded, validate=True)
+              actual = hashlib.sha256(payload).hexdigest()
+              if actual != expected:
+                  raise RuntimeError(f'SHA256 mismatch for {version}: {actual} != {expected}')
+              releases = root / 'releases'
+              releases.mkdir(exist_ok=True)
+              target = releases / f'AgentNEO_v{version}.aneoupdate'
+              target.write_bytes(payload)
+              notes = d / 'release-notes.md'
+              if notes.exists():
+                  out_notes = root / 'release-notes'
+                  out_notes.mkdir(exist_ok=True)
+                  shutil.copyfile(notes, out_notes / f'v{version}.md')
+              sums = d / 'SHA256SUMS.txt'
+              if sums.exists():
+                  shutil.copyfile(sums, root / 'SHA256SUMS.txt')
+              feed = d / 'latest.json'
+              if not feed.exists():
+                  raise RuntimeError(f'Missing signed latest.json for {version}')
+              shutil.copyfile(feed, root / 'latest.json')
+              shutil.rmtree(d)
+              published = True
+          if not published:
+              raise SystemExit(0)
+      - name: Commit published update
+        shell: bash
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then exit 0; fi
+          git config user.name 'AgentNEO Release Bot'
+          git config user.email 'agentneo-release-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish staged AgentNEO update'
+          git push
