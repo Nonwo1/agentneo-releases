@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.7",
+      "package_url": "https://raw.githubusercontent.com/Nonwo1/agentneo-releases/main/releases/AgentNEO_v3.0.7.aneoupdate",
+      "package_sha256": "0d95accd1b5086f6c9b719bed8e5a9f965d85c08ce35065ef9ca94513d933a90",
+      "signature": "Va14D8XsFEAOYcjyUDjZYuqx7fU8lfRJIaEnE5S0iytbVl5i2rLQ3QxtyHl4jhEVefMiUUp4EHE7rHVvMvggAA==",
+      "release_notes": "Universal AgentNEO downloader UI, long-path-safe ComfyUI optional installation, Command Centre microphone transcription, local Whisper STT for both brains, voice-only TTS selection, current-version README policy, and read-only client update behavior."
+    }
+  }
+}
