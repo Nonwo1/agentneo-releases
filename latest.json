@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.2",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/v3.0.2/AgentNEO_v3.0.2.aneoupdate",
-      "package_sha256": "3ac39cd7872178b9279547095a5e0f99e8bafe037a442a7369c4885f732bd44d",
-      "signature": "/n1pyJtnsYloHAluBnhSrGJt3W9AuSN41dlr5vs4FKe7P24QN3brhjQV9Ck7niSZCmIsvVNX+mhqRKhdT2OkCA==",
-      "release_notes": "Automatic signed updates, compact scroll-safe navigation, dynamic media backend selection, and memory schema repair."
+      "version": "3.0.10",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/v3.0.10/AgentNEO_v3.0.10_Update.zip",
+      "package_sha256": "4faffc4955c2647386f87b54778e9780bcac40a5e4deacc749240e5a9e709561",
+      "signature": "6NN2N4jsqIcP7gu4RfXqREkXrzccgzUBXX/wcbl8LZnYAGcYs7ED5sHyZFJA0k6GvfCynPPOFU4DPieayvXABQ==",
+      "release_notes": "AgentNEO v3.0.10 adds professional Privacy Centre and permission layouts, structured PC Doctor reports with solutions/actions, Guided Repair Wizard, real network diagnostic tools, controlled cleanup, Windows integrity/device/Defender repairs, and verification-first repair workflows."
     }
   }
 }
