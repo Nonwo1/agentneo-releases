@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.10",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/v3.0.10/AgentNEO_v3.0.10_Update.zip",
-      "package_sha256": "4faffc4955c2647386f87b54778e9780bcac40a5e4deacc749240e5a9e709561",
-      "signature": "6NN2N4jsqIcP7gu4RfXqREkXrzccgzUBXX/wcbl8LZnYAGcYs7ED5sHyZFJA0k6GvfCynPPOFU4DPieayvXABQ==",
-      "release_notes": "AgentNEO v3.0.10 adds professional Privacy Centre and permission layouts, structured PC Doctor reports with solutions/actions, Guided Repair Wizard, real network diagnostic tools, controlled cleanup, Windows integrity/device/Defender repairs, and verification-first repair workflows."
+      "version": "3.0.11",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/v3.0.11/AgentNEO_v3.0.11_Update.zip",
+      "package_sha256": "4759a061d515cc210056c72bb16a57eabc49eecc724b56851e4d2aeb012b178b",
+      "signature": "MVhiOAJzpVqMINbsWvdnRHb4usOdgAxGnD6QoTD4RJuh0z/gB280fyMUNicolypF6dbI9dkc26VKrMxHFj8aAA==",
+      "release_notes": "AgentNEO v3.0.11 improves Update Centre reliability with GitHub rate-limit handling, metadata fallback, retry guidance and the standard resumable AgentNEO downloader while preserving all v3.0.10 PC Doctor and interface improvements."
     }
   }
 }
