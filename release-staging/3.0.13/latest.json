@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.13",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.13/AgentNEO_v3.0.13_Update.zip",
+      "package_sha256": "76cc8d1b40ec2167c80b716dce3d4b17dd6fb97111bea97696089a025abb52ef",
+      "signature": "cfQhXflgedKC+Wv8UPpfSB9AlpkztWFbgfNixH76ZT52hokY2QhylACUjtY8vTWJJg+0SR4/7i1fHfcnejtbAg==",
+      "release_notes": "AgentNEO v3.0.13 expands Media Studio ComfyUI integration with an all-assets ComfyUI selector, dedicated Diffusion model / VAE / Text encoder menus, automatic loader-aware model discovery, normal ComfyUI saved/preset workflow conversion, native subgraph handling, and automatic workflow assignment from ComfyUI workflow-template and user-workflow APIs while retaining the scroll-safe layout and long-running job monitor."
+    }
+  }
+}
