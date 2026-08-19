@@ -1,0 +1,105 @@
+name: Publish refreshed AgentNEO 3.0.13
+
+on:
+  push:
+    paths:
+      - 'release-staging/3.0.13/READY.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.added, 'release-staging/3.0.13/READY.txt')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct updater and patched installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, io, json, subprocess, zipfile
+
+          root=Path('.')
+          stage=root/'release-staging/3.0.13'
+          work=root/'_publish_v3013';work.mkdir(exist_ok=True)
+          update=work/'AgentNEO_v3.0.13_Update.zip'
+          installer=work/'AgentNEO_v3.0.13.exe'
+          expected_old='ee23b685381040d95c9f77fc8c93df1be85aa643c6eab3776f230011408bbd08'
+          expected_update='76cc8d1b40ec2167c80b716dce3d4b17dd6fb97111bea97696089a025abb52ef'
+          expected_installer='75ae488decf5103fbcb2e38417e0d8afc18514f5a31fe6327dfdcabd42b6e7b0'
+          start=6330752;old_end=41139282;fixed=(2026,8,19,12,0,0)
+          def sha_bytes(b):return hashlib.sha256(b).hexdigest()
+          def sha_file(p):return sha_bytes(Path(p).read_bytes())
+
+          encoded=''.join(p.read_text().strip() for p in sorted(stage.glob('updater.b64.part*')))
+          update.write_bytes(base64.b64decode(encoded))
+          assert sha_file(update)==expected_update,(sha_file(update),expected_update)
+
+          subprocess.run(['gh','release','download','3.0.13','--repo','${{ github.repository }}','--pattern','AgentNEO_v3.0.13.exe','--dir',str(work)],check=True)
+          old=installer.read_bytes()
+          assert sha_bytes(old)==expected_old,(sha_bytes(old),expected_old)
+          old_payload=old[start:old_end]
+          with zipfile.ZipFile(io.BytesIO(old_payload),'r') as oz, zipfile.ZipFile(update,'r') as uz:
+              names=oz.namelist();comment=oz.comment
+              um=json.loads(uz.read('manifest.json'))
+              replacements={r['path']:uz.read('payload/'+r['path']) for r in um['files']}
+              replacements['config/settings.json']=(stage/'config-settings.json').read_bytes()
+              payload={n:(replacements[n] if n in replacements else oz.read(n)) for n in names if n!='MANIFEST_SHA256.txt'}
+          manifest=''.join(f'{sha_bytes(payload[n])}  {n}\n' for n in names if n!='MANIFEST_SHA256.txt').encode()
+          payload['MANIFEST_SHA256.txt']=manifest
+          buf=io.BytesIO()
+          with zipfile.ZipFile(buf,'w',zipfile.ZIP_DEFLATED,compresslevel=9,allowZip64=True) as nz:
+              nz.comment=comment
+              for n in names:
+                  zi=zipfile.ZipInfo(n,fixed);zi.compress_type=zipfile.ZIP_DEFLATED;zi.external_attr=(0o100644<<16)
+                  nz.writestr(zi,payload[n],compress_type=zipfile.ZIP_DEFLATED,compresslevel=9)
+          newzip=buf.getvalue();capacity=len(old)-start
+          assert len(newzip)<=capacity,(len(newzip),capacity)
+          installer.write_bytes(old[:start]+newzip+b'\x00'*(capacity-len(newzip)))
+          assert sha_file(installer)==expected_installer,(sha_file(installer),expected_installer)
+          with zipfile.ZipFile(io.BytesIO(newzip)) as z:
+              assert z.testzip() is None
+              for line in z.read('MANIFEST_SHA256.txt').decode().splitlines():
+                  expected,name=line.split('  ',1);assert sha_bytes(z.read(name))==expected,name
+          print('Updater SHA256',sha_file(update))
+          print('Installer SHA256',sha_file(installer))
+          PY
+
+      - name: Replace 3.0.13 release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release upload 3.0.13 \
+            _publish_v3013/AgentNEO_v3.0.13_Update.zip \
+            _publish_v3013/AgentNEO_v3.0.13.exe \
+            --clobber --repo "${{ github.repository }}"
+
+      - name: Verify published updater hash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf _verify_release && mkdir _verify_release
+          gh release download 3.0.13 --repo "${{ github.repository }}" --pattern 'AgentNEO_v3.0.13_Update.zip' --dir _verify_release
+          echo '76cc8d1b40ec2167c80b716dce3d4b17dd6fb97111bea97696089a025abb52ef  _verify_release/AgentNEO_v3.0.13_Update.zip' | sha256sum -c -
+
+      - name: Publish signed update feed last
+        run: |
+          set -euo pipefail
+          cp release-staging/3.0.13/latest.json latest.json
+          cp release-staging/3.0.13/SHA256SUMS.txt SHA256SUMS.txt
+          cp release-staging/3.0.13/release-notes-v3.0.13.md release-notes/v3.0.13.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add latest.json SHA256SUMS.txt release-notes/v3.0.13.md
+          git commit -m 'Publish refreshed AgentNEO v3.0.13 Media Studio build'
+          git push
