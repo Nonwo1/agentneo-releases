@@ -1,0 +1,192 @@
+{
+  "ollama_url": "http://127.0.0.1:11434",
+  "comfyui_url": "http://127.0.0.1:8188",
+  "permission_mode": "safe",
+  "appearance": {
+    "theme": "Cinematic Cyan",
+    "font_size": 10,
+    "radius": 12,
+    "animations": true,
+    "compact": false,
+    "custom_accent": "#24D9FF"
+  },
+  "orchestration": {
+    "supervisor_model": "AUTO",
+    "context_tokens": 8192,
+    "max_tool_rounds": 0,
+    "parallel_workers": 0,
+    "agent_request_timeout_seconds": 900,
+    "supervisor_request_timeout_seconds": 900,
+    "agent_retry_attempts": 3,
+    "agent_retry_backoff_seconds": 1.5,
+    "task_graph": true,
+    "dynamic_model_routing": true,
+    "service_error_retry_attempts": 6,
+    "service_error_fallback_model": "",
+    "strict_online": false
+  },
+  "voice": {
+    "stt_model": "large-v3-turbo",
+    "stt_device": "cuda",
+    "stt_compute_type": "float16",
+    "stt_language": "en",
+    "sample_rate": 16000,
+    "vad_threshold": 0.0025,
+    "end_silence_seconds": 0.38,
+    "tts_backend": "none",
+    "tts_rate": 185,
+    "tts_volume": 1.0,
+    "voice_id": "",
+    "qwen_model": "",
+    "style_prompt": "natural, warm, confident, conversational",
+    "accent": "Australian English",
+    "voice_style": "Natural",
+    "emotion": "Friendly",
+    "pitch": 0,
+    "tone": 0,
+    "speech_reply": false,
+    "input_device": null,
+    "output_device": null,
+    "mic_sensitivity": 60,
+    "mic_gain": 1.0
+  },
+  "screen": {
+    "monitor": 1,
+    "interval_seconds": 2.0,
+    "vision_model": "AUTO",
+    "camera_index": 1,
+    "camera_device_index": 0,
+    "camera_device_id": "",
+    "analysis_max_edge": 1280,
+    "analysis_timeout_seconds": 600,
+    "preview_fps": 8
+  },
+  "installer": {
+    "verify_existing_files": true,
+    "repair_corrupt_files": true,
+    "create_desktop_shortcut": true,
+    "baseline": "v1.5-skills-memory-projects"
+  },
+  "browser": {
+    "headless": false,
+    "timeout_seconds": 45
+  },
+  "media": {
+    "image_workflow": "",
+    "video_workflow": "",
+    "auto_open_outputs": false,
+    "agent_backend": "",
+    "comfyui_enabled": false,
+    "comfy_model": "",
+    "workflow_library": "",
+    "width": 1024,
+    "height": 1024,
+    "steps": 20,
+    "cfg": 7.0,
+    "sampler": "euler",
+    "scheduler": "normal",
+    "seed": "",
+    "denoise": 0.75,
+    "frames": 81,
+    "fps": 16,
+    "workflows": {
+      "image": "",
+      "image_to_image": "",
+      "upscale": "",
+      "video": "",
+      "image_to_video": ""
+    },
+    "comfy_diffusion_model": "",
+    "comfy_vae": "",
+    "comfy_text_encoder": ""
+  },
+  "updates": {
+    "channel": "stable",
+    "feed_url": "https://raw.githubusercontent.com/Nonwo1/agentneo-releases/main/latest.json",
+    "automatic_check": true,
+    "download_automatically": true,
+    "install_on_exit": false,
+    "highest_version": "3.0.13",
+    "trusted_public_key": "uCWYZaCMpyJ5YetGShMDYRe7PcXFepPbNlygrI2rrk8=",
+    "install_automatically": true,
+    "check_interval_hours": 6,
+    "startup_delay_seconds": 12
+  },
+  "resources": {
+    "soft_vram_percent": 82,
+    "hard_vram_percent": 92,
+    "max_parallel_model_jobs": 2,
+    "model_idle_seconds": 300,
+    "lease_wait_seconds": 120,
+    "rebalance_interval_seconds": 5,
+    "renderer_restart_limit_per_minute": 3,
+    "ollama_flash_attention": true,
+    "ollama_kv_cache_type": "f16",
+    "ollama_num_parallel": 2,
+    "ollama_max_loaded_models": 2,
+    "ollama_max_queue": 64,
+    "ollama_keep_alive": "5m"
+  },
+  "security": {
+    "indirect_prompt_injection_guard": true,
+    "strict_high_risk_approval": true,
+    "audit_authorizations": true
+  },
+  "mcp": {
+    "protocol": "2026-07-28",
+    "servers": {}
+  },
+  "telemetry": {
+    "enabled": false,
+    "persist_errors": true,
+    "flight_recorder_events": 2048,
+    "exporter": "none",
+    "remote_export": false
+  },
+  "projects": {
+    "active": ""
+  },
+  "memory_architecture": {
+    "working": true,
+    "episodic": true,
+    "semantic": true,
+    "procedural": true,
+    "provenance": true
+  },
+  "version": "3.0.13",
+  "baseline": "v1.10-universal-downloader-comfy-longpath-whisper-commandmic",
+  "memory": {
+    "embedding_model": "AUTO",
+    "semantic_scan_limit": 240,
+    "semantic_auto_retrieval": true
+  },
+  "backgrounds": {
+    "pages": {}
+  },
+  "runtime": {
+    "active_brain": "agentneo"
+  },
+  "commercial": {
+    "edition": "Commercial",
+    "release_mode": "engineering-rc",
+    "model_distribution": "none",
+    "comfyui_distribution": "external",
+    "ollama_distribution": "external-or-user-installed",
+    "byom": true,
+    "byok": true,
+    "telemetry_opt_in": true,
+    "privacy_centre": true,
+    "third_party_notice_required": true,
+    "qt_commercial_approval_required": true,
+    "legal_review_required": true,
+    "trademark_clearance_required": true
+  },
+  "privacy": {
+    "first_run_disclosure_required": true,
+    "microphone_default": false,
+    "camera_default": false,
+    "screen_capture_default": false,
+    "pc_control_default": "prompt",
+    "online_data_disclosure_required": true
+  }
+}
