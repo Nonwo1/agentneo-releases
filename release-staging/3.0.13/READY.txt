@@ -1,0 +1,3 @@
+AgentNEO v3.0.13 refreshed Media Studio release is ready to publish.
+Expected updater SHA256: 5e7c39b8ad35aaffe26cee7e57d4f2803eeecb3a2605fb390996dec9c5de79cf
+Expected installer SHA256: b99995f7137687ce8023d087bedcabdec151e3bbd0b1a8d474a9bf721f4daa0d
