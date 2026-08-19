@@ -3,9 +3,9 @@
   "channels": {
     "stable": {
       "version": "3.0.12",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/v3.0.12/AgentNEO_v3.0.12_Update.zip",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.12/AgentNEO_v3.0.12_Update.zip",
       "package_sha256": "83cf39b4da4dd75ef917eb2cad80e19d3d2760bc6bc17c1721a81a6931415450",
-      "signature": "aHZ4uQDAZYzhebzqkt6Sp0cuQBQiJ/x9b5y1XASxcjbLCiwB+cp5L7FA39ziLDUJXFEYAnsrPXWvwlmfWkUvBA==",
+      "signature": "flDlrRY6T4h0f/saQM092jnce2fFKGt0T7UcGdPmRlSZ3/w7JJt/gxRZLW12UXKNQ5Ejbk4+Je5Y3dWlDGIqDw==",
       "release_notes": "AgentNEO v3.0.12 introduces Media Studio with automatic ComfyUI model discovery and workflow setup, source-image upload for image/video workflows, universal in-app image/video preview, output history/save controls, and no bundled media model weights while retaining the v3.0.11 hardened updater."
     }
   }
