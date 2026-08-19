@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.12",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.12/AgentNEO_v3.0.12_Update.zip",
-      "package_sha256": "83cf39b4da4dd75ef917eb2cad80e19d3d2760bc6bc17c1721a81a6931415450",
-      "signature": "flDlrRY6T4h0f/saQM092jnce2fFKGt0T7UcGdPmRlSZ3/w7JJt/gxRZLW12UXKNQ5Ejbk4+Je5Y3dWlDGIqDw==",
-      "release_notes": "AgentNEO v3.0.12 introduces Media Studio with automatic ComfyUI model discovery and workflow setup, source-image upload for image/video workflows, universal in-app image/video preview, output history/save controls, and no bundled media model weights while retaining the v3.0.11 hardened updater."
+      "version": "3.0.13",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.13/AgentNEO_v3.0.13_Update.zip",
+      "package_sha256": "7bb91128ac4875f858e31a4df74dc1247eca983bb27acd7b8c15861810028e56",
+      "signature": "IvmOSLOP6GZYzEQcQspKlybMjsZiu7ndBg/VYDBsOdVQyYEiTQqfOAZsazGUN8TcKdQuXOnXM7VEh1K39gYUCQ==",
+      "release_notes": "AgentNEO v3.0.13 fixes Media Studio text/control clipping with a scroll-safe Generation layout and scrollable status boxes, and prevents false ComfyUI timeouts by tracking the exact prompt ID through long-running image/video jobs while tolerating transient queue/history read timeouts."
     }
   }
 }
