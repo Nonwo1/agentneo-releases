@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.16",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.16/AgentNEO_v3.0.16_Update.zip",
-      "package_sha256": "fe2b94484f658c2397a666ccd52a2e3dedee36ab1654ad09810ea57f8337e2b3",
-      "signature": "eA1e3X/hLyvNDsJijXS2UmpDRHjsTd4IqNqQtag0QNk9UJi9ziXbcG0xoR09vNb8/FJ5Kg32bX1mOm5zgTD4Ag==",
-      "release_notes": "AgentNEO v3.0.16 accelerates simple tasks with a deterministic fast path while using progress-aware hardware-tolerant model stall watchdogs, sandbox preflight fail-fast, execution-evidence/report ordering gates, workspace-relative file operations, bounded retries and lower factory local-model concurrency."
+      "version": "3.0.17",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.17/AgentNEO_v3.0.17_Update.zip",
+      "package_sha256": "3476cb0b185929ec84415eb3923670def7175347461a2e3247520e92a93c3d72",
+      "signature": "rY/bmieHvT+rNdfYQQMOWdTgqF9Z0FXtBYTNgefrH0hijZsCkm3jgYpd6ywvuDNVHeSYaag7bNlhQdkfbDhgDw==",
+      "release_notes": "AgentNEO v3.0.17 adds Automatic Sandbox Provisioning & Health Centre with detailed host scans/status, UAC-gated Windows feature repair, real backend self-tests, restart/resume of the original task, backend preferences and resource-aware sandbox sizing while preserving v3.0.16 progress-aware execution."
     }
   }
 }
