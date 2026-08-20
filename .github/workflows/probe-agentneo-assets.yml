@@ -1,0 +1,37 @@
+name: Probe AgentNEO release assets
+
+on:
+  push:
+    paths:
+      - 'release-staging/PROBE_3020.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Probe release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p release-staging
+          {
+            echo '3.0.19:'
+            gh release view 3.0.19 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+            echo '3.0.18:'
+            gh release view 3.0.18 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+            echo '3.0.17:'
+            gh release view 3.0.17 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+          } > release-staging/PROBE_3020_RESULT.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add release-staging/PROBE_3020_RESULT.txt
+          git commit -m 'Probe AgentNEO release assets for 3.0.20 build' || true
+          git push
