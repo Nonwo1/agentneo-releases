@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.13",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.13/AgentNEO_v3.0.13_Update.zip",
-      "package_sha256": "7bb91128ac4875f858e31a4df74dc1247eca983bb27acd7b8c15861810028e56",
-      "signature": "IvmOSLOP6GZYzEQcQspKlybMjsZiu7ndBg/VYDBsOdVQyYEiTQqfOAZsazGUN8TcKdQuXOnXM7VEh1K39gYUCQ==",
-      "release_notes": "AgentNEO v3.0.13 fixes Media Studio text/control clipping with a scroll-safe Generation layout and scrollable status boxes, and prevents false ComfyUI timeouts by tracking the exact prompt ID through long-running image/video jobs while tolerating transient queue/history read timeouts."
+      "version": "3.0.14",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.14/AgentNEO_v3.0.14_Update.zip",
+      "package_sha256": "77161dff6fc843d23ae18809cf621289bcc5342e0e30f46112094b9de8ae9b79",
+      "signature": "2zj8qf4PIQmOk8Wjj4LFzmUMHuJg+KMuBXzBiSDAgMVEFJfSaNRYUTFtqChrUW2eC8UCD2h1ig6C5aXjTXbHBw==",
+      "release_notes": "AgentNEO v3.0.14 introduces Sandbox Lab: isolated Windows development and testing with Hyper-V differencing VHDX, PowerShell Direct, Windows Sandbox profiles, sandbox-scoped tool downloads, checkpoints/rollback, reproducible task recipes and verified artifact promotion while preserving v3.0.13 Media Studio reliability fixes."
     }
   }
 }
