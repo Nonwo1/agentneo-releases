@@ -1,0 +1,2 @@
+AgentNEO v3.0.19 release staging ready
+Updater SHA-256: a0a474da43723fdeb00745f9200e0995f9b6674b7ce5b9afd6fcc1602c995732
