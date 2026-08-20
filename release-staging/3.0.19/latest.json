@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.19",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.19/AgentNEO_v3.0.19_Update.zip",
+      "package_sha256": "a0a474da43723fdeb00745f9200e0995f9b6674b7ce5b9afd6fcc1602c995732",
+      "signature": "GSX0J4u9/JGKVRUWFvcuyG3HiGOWUZ48uJUKMYkmI00RYHaM+rlNp7afh0X23KAQO60rkgtiuaneWCRVnah0DA==",
+      "release_notes": "AgentNEO v3.0.19 fixes Sandbox Lab read-only introspection and Windows provisioning diagnostics, and restores universal live Whisper transcription across Chat, Voice Assistant, Overlay and Command Centre with synchronized draft handling."
+    }
+  }
+}
