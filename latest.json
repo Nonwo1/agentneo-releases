@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.17",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.17/AgentNEO_v3.0.17_Update.zip",
-      "package_sha256": "3476cb0b185929ec84415eb3923670def7175347461a2e3247520e92a93c3d72",
-      "signature": "rY/bmieHvT+rNdfYQQMOWdTgqF9Z0FXtBYTNgefrH0hijZsCkm3jgYpd6ywvuDNVHeSYaag7bNlhQdkfbDhgDw==",
-      "release_notes": "AgentNEO v3.0.17 adds Automatic Sandbox Provisioning & Health Centre with detailed host scans/status, UAC-gated Windows feature repair, real backend self-tests, restart/resume of the original task, backend preferences and resource-aware sandbox sizing while preserving v3.0.16 progress-aware execution."
+      "version": "3.0.18",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.18/AgentNEO_v3.0.18_Update.zip",
+      "package_sha256": "459dc2c517660492f9937f4653cc99abc3eaf4dc4211eb17ad6de87a48e9ca25",
+      "signature": "hXQAbczylCuqT/brJPKaDvyv2oKrrf1AapdVZLZHiJ52s16il4tgF5DG24YEsxynYf6HqRy61B212IX1QC7sAg==",
+      "release_notes": "AgentNEO v3.0.18 enlarges and independently scrolls Sandbox Health Centre diagnostics and makes the complete Sandbox Lab page vertically scroll-safe for easier reading on shorter or high-DPI displays."
     }
   }
 }
