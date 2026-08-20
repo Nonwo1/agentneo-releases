@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.15",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.15/AgentNEO_v3.0.15_Update.zip",
-      "package_sha256": "6afb5944995721d2cbe68687a387595fcf520efb2ac1776ab57738cab0beabaa",
-      "signature": "iKEunVICEasqboTGeH/7JeRDfNwnhofFxZKj/jp+e+zQQXGTkyr0jhMdPnTO77QzExzIpGUywfel1wxo/ZFtDw==",
-      "release_notes": "AgentNEO v3.0.15 introduces Autonomous Sandbox Orchestration with deterministic prompt/action isolation decisions, automatic create/reuse of one shared sandbox across agents, dynamic build/run/test escalation, approved downloader staging, no silent host fallback, and safe sandbox retention/cleanup policies."
+      "version": "3.0.16",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.16/AgentNEO_v3.0.16_Update.zip",
+      "package_sha256": "fe2b94484f658c2397a666ccd52a2e3dedee36ab1654ad09810ea57f8337e2b3",
+      "signature": "eA1e3X/hLyvNDsJijXS2UmpDRHjsTd4IqNqQtag0QNk9UJi9ziXbcG0xoR09vNb8/FJ5Kg32bX1mOm5zgTD4Ag==",
+      "release_notes": "AgentNEO v3.0.16 accelerates simple tasks with a deterministic fast path while using progress-aware hardware-tolerant model stall watchdogs, sandbox preflight fail-fast, execution-evidence/report ordering gates, workspace-relative file operations, bounded retries and lower factory local-model concurrency."
     }
   }
 }
