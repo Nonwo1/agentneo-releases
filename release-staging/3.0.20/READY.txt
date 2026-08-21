@@ -1,0 +1,4 @@
+AgentNEO v3.0.20 release is ready to publish.
+Expected updater SHA-256: 5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf
+Expected staging delta SHA-256: 0bbceadbfd5485b16806adf307e7ae990288221ff7b0d0dab12e12bdac78fb11
+The publish workflow must verify both hashes and re-download/re-verify the release asset before promoting latest.json.
