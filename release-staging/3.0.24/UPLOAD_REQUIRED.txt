@@ -1,27 +1,20 @@
-AgentNEO v3.0.24 manual release binary upload checklist
-======================================================
+AgentNEO 3.0.24 release asset status
+====================================
 
-Repository metadata, release notes, validation and checksums are staged in GitHub.
+The in-app updater asset is published and the signed public latest.json feed now points to AgentNEO 3.0.24.
 
-Attach these exact binary assets to the GitHub v3.0.24 Release:
+Published updater asset:
 
-1. AgentNEO_v3.0.24_Update_from_3.0.23.zip
-   SHA-256: 2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d
+AgentNEO_v3.0.24_Update_from_3.0.23.zip
+SHA-256: 2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d
+Validated baseline: AgentNEO 3.0.23
 
-2. AgentNEO_v3.0.24_Source_Code.zip
-   SHA-256: 0a957243e6450678d09672e4a97c06b2d081131b1c05e7f040cd39690b5d23a3
+The updater feed is signed with the configured AgentNEO Ed25519 publisher key. Clients verify both the publisher signature and exact SHA-256 before accepting the package.
 
-3. AgentNEO_v3.0.24_Full_Installer.exe
-   SHA-256: 96641b58a2f4e2f716095612eed35c8012c02ebd7176cdf67821df6de9a95bc9
+Optional release assets that may also be attached for manual/full-install distribution:
+- AgentNEO_v3.0.24_Source_Code.zip
+- AgentNEO_v3.0.24_Full_Installer.exe
+- AgentNEO_v3.0.24_Full_Installer_Package.zip
+- AgentNEO_v3.0.24_Validation.txt
 
-4. AgentNEO_v3.0.24_Full_Installer_Package.zip
-   SHA-256: f917e5757a9d515504b01fe7248b5847d0246e9242d2edd0b9b536919c09a58b
-
-5. AgentNEO_v3.0.24_Validation.txt
-   SHA-256: 1762f60ba3a98db10e5be7911525eb5fbc41278c477773af696b19210725609e
-
-IMPORTANT
----------
-- v3.0.24 updater is validated from AgentNEO v3.0.23 only.
-- Do not replace the signed stable `latest.json` feed with v3.0.24 until cumulative baseline validation and publisher signing are complete.
-- The current stable in-app feed remains v3.0.22.
+NOTE: the 3.0.24 updater is validated from 3.0.23. Older direct-update baselines are not claimed as validated for this package.
