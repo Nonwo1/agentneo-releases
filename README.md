@@ -2,6 +2,14 @@
 
 Official public distribution repository for AgentNEO release packages and update metadata.
 
+## Current stable release
+
+- Version: `3.0.20`
+- In-app updater: `AgentNEO_v3.0.20_Update.zip`
+- SHA-256: `5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf`
+- Stable feed: `latest.json`
+- Release notes: `release-notes/v3.0.20.md`
+
 ## Release naming
 
 - `AgentNEO_vX.Y.Z.exe` — full Windows installer when published
