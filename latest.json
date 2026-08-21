@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.18",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.18/AgentNEO_v3.0.18_Update.zip",
-      "package_sha256": "459dc2c517660492f9937f4653cc99abc3eaf4dc4211eb17ad6de87a48e9ca25",
-      "signature": "hXQAbczylCuqT/brJPKaDvyv2oKrrf1AapdVZLZHiJ52s16il4tgF5DG24YEsxynYf6HqRy61B212IX1QC7sAg==",
-      "release_notes": "AgentNEO v3.0.18 enlarges and independently scrolls Sandbox Health Centre diagnostics and makes the complete Sandbox Lab page vertically scroll-safe for easier reading on shorter or high-DPI displays."
+      "version": "3.0.20",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.20/AgentNEO_v3.0.20_Update.zip",
+      "package_sha256": "5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf",
+      "signature": "vO3UEJqFQHZlLm4osZ2x11ka7U5z8tbAoTkphtn7sRUHl+2mN931AqAW3W2ar5pkZLFzfy8FaNo7s7J/c1y6Dg==",
+      "release_notes": "AgentNEO v3.0.20 fixes Windows Sandbox readiness/self-test/control, cleanup races, managed Ollama embeddings and stalled local-model streams while preserving v3.0.19 universal transcription fixes."
     }
   }
 }
