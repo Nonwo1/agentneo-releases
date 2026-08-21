@@ -1,0 +1,31 @@
+AgentNEO v3.0.22 Cumulative Update Validation
+=============================================
+Package: AgentNEO_v3.0.22_Update.zip
+Package bytes: 31,831,552
+Package SHA-256: 653d461311ac40ea6f39e677d092018b482be874845a0666b61e245af2ae8efa
+Format: agentneo-update-v1
+Cumulative from: 3.0.11
+Minimum supported version: 3.0.11
+Managed replace records: 289
+Delete records: 0
+
+Direct baseline simulations:
+PASS  3.0.11 -> 3.0.22   changed=92 applied=92 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.12 -> 3.0.22   changed=83 applied=83 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.13 -> 3.0.22   changed=78 applied=78 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.14 -> 3.0.22   changed=70 applied=70 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.15 -> 3.0.22   changed=62 applied=62 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.16 -> 3.0.22   changed=53 applied=53 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.17 -> 3.0.22   changed=37 applied=37 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.18 -> 3.0.22   changed=36 applied=36 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.19 -> 3.0.22   changed=32 applied=32 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.20 -> 3.0.22   changed=25 applied=25 exact_managed=289 protected=PASS final=3.0.22
+PASS  3.0.21 -> 3.0.22   changed=20 applied=20 exact_managed=289 protected=PASS final=3.0.22
+
+PASS: Real UpdateManager from every supported baseline was used.
+PASS: All 289 current updater-managed files converged byte-for-byte.
+PASS: Protected settings/permissions/agents/models/storage state and user data were preserved.
+PASS: Version metadata synchronized to 3.0.22.
+PASS: No managed deletions are required for v3.0.22.
+
+CUMULATIVE VALIDATION RESULT: PASS
