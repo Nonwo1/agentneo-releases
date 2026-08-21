@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.24",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.24/AgentNEO_v3.0.24_Update_from_3.0.23.zip",
+      "package_sha256": "2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d",
+      "signature": "rByMIOPWIB9DVo1W4i0q/yllhgk9E6dS2sf36/oYPK8WR9lFAarGFGnfV4r1JDduz+rNKgP34lw8fcuuPeCUDA==",
+      "release_notes": "AgentNEO 3.0.24 adds activity-aware long-task execution, stream/context/token progress monitoring, improved model diagnostics, corrected idle/ready status handling, ComfyUI launch/readiness controls, automatic media model presets, workflow discovery/generation, and pre-submit ComfyUI workflow validation. This updater is validated from AgentNEO 3.0.23."
+    }
+  }
+}
