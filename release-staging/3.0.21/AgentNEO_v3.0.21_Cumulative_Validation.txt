@@ -1,0 +1,28 @@
+AgentNEO v3.0.21 Cumulative Update Validation
+==============================================================
+Policy baseline: v3.0.11
+Package: AgentNEO_v3.0.21_Update_GitHub.zip
+Package bytes: 36,454,897
+Package SHA-256: 8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973
+Managed current files included: 285
+Legacy delete records: 0
+[PASS] ZIP CRC/integrity
+[PASS] Backward-compatible manifest format agentneo-update-v1
+[PASS] Manifest marked cumulative
+[PASS] Minimum supported version is 3.0.11
+[PASS] Complete current managed payload included
+[PASS] 3.0.11 -> 3.0.21: changed=85, applied=85; exact managed convergence; protected data preserved
+[PASS] 3.0.12 -> 3.0.21: changed=76, applied=76; exact managed convergence; protected data preserved
+[PASS] 3.0.13 -> 3.0.21: changed=71, applied=71; exact managed convergence; protected data preserved
+[PASS] 3.0.14 -> 3.0.21: changed=63, applied=63; exact managed convergence; protected data preserved
+[PASS] 3.0.15 -> 3.0.21: changed=55, applied=55; exact managed convergence; protected data preserved
+[PASS] 3.0.16 -> 3.0.21: changed=46, applied=46; exact managed convergence; protected data preserved
+[PASS] 3.0.17 -> 3.0.21: changed=30, applied=30; exact managed convergence; protected data preserved
+[PASS] 3.0.18 -> 3.0.21: changed=29, applied=29; exact managed convergence; protected data preserved
+[PASS] 3.0.19 -> 3.0.21: changed=25, applied=25; exact managed convergence; protected data preserved
+[PASS] 3.0.20 -> 3.0.21: changed=18, applied=18; exact managed convergence; protected data preserved
+
+FINAL STATUS: PASS — every supported baseline converges directly to v3.0.21.
+
+Release rule:
+Stable updater ZIPs are cumulative from the complete current updater-managed application state and must pass baseline-to-latest simulation for every supported release before publication.
