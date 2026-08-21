@@ -1,21 +1,21 @@
-# AgentNEO v3.0.24 Manual Release Staging
+# AgentNEO 3.0.24 Release Metadata
 
-This directory contains the public release metadata for AgentNEO v3.0.24.
+This directory contains the public release metadata for AgentNEO 3.0.24.
 
 ## Update scope
 
-The v3.0.24 updater has been validated for **AgentNEO v3.0.23 -> v3.0.24** with the real transactional `UpdateManager`.
+The 3.0.24 updater has been validated for **AgentNEO 3.0.23 -> 3.0.24** with the real transactional `UpdateManager`.
 
-It is not represented as a cumulative updater from earlier baselines until those exact baselines are separately validated.
+It is not represented as a validated cumulative updater from earlier baselines unless those exact baselines are separately tested.
 
-## Manual release artifacts
+## In-app update feed
 
-- `AgentNEO_v3.0.24_Update_from_3.0.23.zip`
-- `AgentNEO_v3.0.24_Source_Code.zip`
-- `AgentNEO_v3.0.24_Full_Installer.exe`
-- `AgentNEO_v3.0.24_Full_Installer_Package.zip`
-- `AgentNEO_v3.0.24_Validation.txt`
-- `SHA256SUMS.txt`
+The signed public `latest.json` feed now points to AgentNEO 3.0.24. The feed uses the configured AgentNEO Ed25519 publisher key and the exact updater SHA-256 before installation.
+
+- Version: `3.0.24`
+- Package: `AgentNEO_v3.0.24_Update_from_3.0.23.zip`
+- SHA-256: `2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d`
+- Minimum validated baseline: `3.0.23`
 
 ## Major changes
 
@@ -30,5 +30,3 @@ It is not represented as a cumulative updater from earlier baselines until those
 - ComfyUI `/object_info` workflow validation before queueing.
 - Specific missing-node/support-file errors instead of generic generation failures.
 - No bundled ComfyUI, media model weights, custom-node packs or third-party workflow downloads.
-
-The signed stable in-app `latest.json` feed is intentionally not changed by this manual release metadata update.
