@@ -1,0 +1,83 @@
+AgentNEO v3.0.24 — Activity-Aware Long Tasks + Automated Media Studio Validation
+================================================================================
+Build: ActivityAwareLongTasksAutomatedMedia
+Target upgrade: AgentNEO v3.0.23 -> v3.0.24
+Validation environment: isolated build/test environment
+
+IMPLEMENTED
+-----------
+[PASS] Slow local-model tasks use activity-aware stall budgets instead of a short fixed wall timeout.
+[PASS] Resident local stall budget: 600 seconds.
+[PASS] Cold local stall budget: 900 seconds.
+[PASS] Resource-pressure stall budget: 1200 seconds.
+[PASS] Independent orchestration wall ceiling: 3600 seconds.
+[PASS] Ollama stream activity/context/output packets keep a live task open while progress continues.
+[PASS] Waiting/receiving heartbeat state and token/activity telemetry are exposed to the UI.
+[PASS] Optional stopped ComfyUI no longer marks an otherwise idle local AgentNEO session DEGRADED.
+[PASS] Media Studio includes LAUNCH / READY for an already-installed local managed ComfyUI runtime.
+[PASS] Media generation may explicitly auto-start the installed local ComfyUI server and wait for READY.
+[PASS] Model family presets auto-fill model-specific image/video generation settings.
+[PASS] MODEL PRESET CONFIGS UI is present.
+[PASS] API workflow selector and GENERATE / DISCOVER API WORKFLOWS are present.
+[PASS] Standard checkpoint, Flux, Flux-GGUF and upscale workflow foundations are included.
+[PASS] Connected ComfyUI workflow/history discovery and /object_info validation are implemented.
+[PASS] Missing custom nodes/support files return specific setup errors instead of blind queue submission.
+[PASS] ComfyUI/media models/custom-node packs remain non-bundled.
+
+AUTOMATED TESTS
+---------------
+[PASS] pytest: 242 passed, 0 failed.
+[PASS] Python AST/parse validation: 111 files.
+[PASS] JSON parse validation: 89 files.
+[PASS] Command Centre app.js: node --check PASS.
+[PASS] Command Centre app.bundle.js: node --check PASS.
+
+SOURCE PACKAGE
+--------------
+[PASS] ZIP CRC.
+[PASS] Source entries: 386.
+[PASS] MANIFEST_SHA256.txt entries verified: 385.
+[PASS] No __pycache__, .pytest_cache, .pyc or .pyo release artifacts.
+[PASS] No bundled .pt/.pth/.safetensors/.gguf/.onnx/.ckpt model weights.
+
+UPDATER
+-------
+[PASS] Update format: agentneo-update-v1.
+[PASS] Target version: 3.0.24.
+[PASS] Validated baseline/minimum supported version: 3.0.23.
+[PASS] Updater-managed rows/hash-verified payloads: 297.
+[PASS] Real AgentNEO UpdateManager integration test: v3.0.23 -> v3.0.24 PASS.
+[PASS] Integration preview changed files: 26.
+[PASS] Integration applied files transactionally: 26.
+[PASS] Post-update installed version: 3.0.24.
+[PASS] Protected settings.json, permissions.json, agents.json and models.json remained unchanged.
+[LIMIT] This updater is validated from v3.0.23 only; it is not claimed as cumulative from earlier baselines.
+
+WINDOWS INSTALLER
+-----------------
+[PASS] PE32+ x64 Windows GUI executable.
+[PASS] 9 PE sections including .rsrc.
+[PASS] Existing AgentNEO .rsrc/icon resource section preserved byte-for-byte from the approved v3.0.23 installer.
+[PASS] Embedded bootstrap wizard updated to v3.0.24.
+[PASS] Embedded runtime installer payload ZIP CRC/manifest verified (343 entries).
+[PASS] Developer test files are intentionally omitted from the installer runtime payload; they remain in the full Source Code ZIP.
+
+NON-BUNDLING / COMPLIANCE
+-------------------------
+[PASS] No ComfyUI distribution bundled.
+[PASS] No media model weights bundled.
+[PASS] No custom-node packs bundled.
+[PASS] No arbitrary third-party workflow downloads bundled.
+[PASS] User-owned model moves require explicit confirmation.
+[PASS] ComfyUI LAUNCH / READY operates only on an already-installed local managed runtime.
+
+LIMITATIONS
+-----------
+The build environment cannot execute the target Windows GPU, local Ollama models, physical audio devices, or the user's ComfyUI installation. On-device model/media validation should be rerun after installation. The installer is not Authenticode-signed in this build environment.
+
+ARTIFACT SHA-256
+----------------
+0a957243e6450678d09672e4a97c06b2d081131b1c05e7f040cd39690b5d23a3  AgentNEO_v3.0.24_Source_Code.zip
+2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d  AgentNEO_v3.0.24_Update_from_3.0.23.zip
+96641b58a2f4e2f716095612eed35c8012c02ebd7176cdf67821df6de9a95bc9  AgentNEO_v3.0.24_Full_Installer.exe
+f917e5757a9d515504b01fe7248b5847d0246e9242d2edd0b9b536919c09a58b  AgentNEO_v3.0.24_Full_Installer_Package.zip
