@@ -1,0 +1,109 @@
+name: Publish AgentNEO v3.0.20
+
+on:
+  push:
+    paths:
+      - "release-staging/3.0.20/READY.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify updater
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist verify
+          cat \
+            release-staging/3.0.20/delta.b64.part00 \
+            release-staging/3.0.20/delta.b64.part01 \
+            release-staging/3.0.20/delta.b64.part02 \
+            release-staging/3.0.20/delta.b64.part03 \
+            release-staging/3.0.20/delta.b64.part04 \
+            release-staging/3.0.20/delta.b64.part05 \
+            release-staging/3.0.20/delta.b64.part06 \
+            release-staging/3.0.20/delta.b64.part07 \
+            | tr -d '\r\n\t ' | base64 --decode > dist/github_staging_delta.zip
+
+          echo "0bbceadbfd5485b16806adf307e7ae990288221ff7b0d0dab12e12bdac78fb11  dist/github_staging_delta.zip" | sha256sum --check --strict
+          unzip -t dist/github_staging_delta.zip
+
+          curl --fail --location --retry 4 --retry-delay 3 \
+            --output dist/AgentNEO_v3.0.19_Update.zip \
+            "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.19/AgentNEO_v3.0.19_Update.zip"
+
+          python3 release-staging/3.0.20/rebuild-v3020-update.py \
+            dist/AgentNEO_v3.0.19_Update.zip \
+            dist/github_staging_delta.zip \
+            dist/AgentNEO_v3.0.20_Update.zip
+
+          echo "5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf  dist/AgentNEO_v3.0.20_Update.zip" | sha256sum --check --strict
+          unzip -t dist/AgentNEO_v3.0.20_Update.zip
+
+      - name: Create or update GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view 3.0.20 >/dev/null 2>&1; then
+            gh release edit 3.0.20 \
+              --title "AgentNEO v3.0.20" \
+              --notes-file release-staging/3.0.20/RELEASE_NOTES_v3.0.20.md
+          else
+            gh release create 3.0.20 \
+              --target main \
+              --title "AgentNEO v3.0.20" \
+              --notes-file release-staging/3.0.20/RELEASE_NOTES_v3.0.20.md
+          fi
+
+          gh release upload 3.0.20 \
+            dist/AgentNEO_v3.0.20_Update.zip \
+            release-staging/3.0.20/SHA256SUMS_v3.0.20.txt \
+            release-staging/3.0.20/AgentNEO_v3.0.20_Validation.txt \
+            release-staging/3.0.20/RELEASE_NOTES_v3.0.20.md \
+            release-staging/3.0.20/latest.json \
+            --clobber
+
+      - name: Verify published updater asset
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release download 3.0.20 \
+            --pattern "AgentNEO_v3.0.20_Update.zip" \
+            --dir verify \
+            --clobber
+          echo "5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf  verify/AgentNEO_v3.0.20_Update.zip" | sha256sum --check --strict
+          unzip -t verify/AgentNEO_v3.0.20_Update.zip
+
+      - name: Promote signed stable feed after asset verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+          cp release-staging/3.0.20/latest.json latest.json
+          cp release-staging/3.0.20/SHA256SUMS_v3.0.20.txt SHA256SUMS_v3.0.20.txt
+          cp release-staging/3.0.20/RELEASE_NOTES_v3.0.20.md RELEASE_NOTES_v3.0.20.md
+          printf '%s\n' \
+            'AgentNEO v3.0.20 publication verified.' \
+            'Updater SHA-256: 5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf' \
+            'Stable feed promoted only after downloading and re-verifying the GitHub release asset.' \
+            > release-staging/3.0.20/PUBLISHED.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest.json SHA256SUMS_v3.0.20.txt RELEASE_NOTES_v3.0.20.md release-staging/3.0.20/PUBLISHED.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish AgentNEO v3.0.20 stable feed [skip ci]"
+            git push origin HEAD:main
+          fi
