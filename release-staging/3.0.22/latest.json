@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.22",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.22/AgentNEO_v3.0.22_Update.zip",
+      "package_sha256": "653d461311ac40ea6f39e677d092018b482be874845a0666b61e245af2ae8efa",
+      "signature": "Yc625bajMLBfOQP+Ezel6V+HU2CsY4m2I5mBM5YZG5CaugYNGkbU3tDs59KA0+9LVoatz0c5B+Fljt3OPDkqBA==",
+      "release_notes": "AgentNEO v3.0.22 adds deterministic capability-aware diagnostics for all registered agents, role-specific backend tests, bounded continue-on-failure timeouts, read-only health checks without unnecessary sandbox creation, and duplicate runtime-event suppression. The cumulative updater is validated for direct upgrades from v3.0.11 through v3.0.21."
+    }
+  }
+}
