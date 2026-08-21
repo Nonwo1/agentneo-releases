@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "channel": "stable",
+  "generated_utc": "2026-08-20T23:28:00Z",
+  "stable": {
+    "version": "3.0.20",
+    "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.20/AgentNEO_v3.0.20_Update.zip",
+    "package_sha256": "5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf",
+    "release_notes_url": "https://github.com/Nonwo1/agentneo-releases/releases/tag/3.0.20"
+  },
+  "signature": "bxcSRvza7N4F3/cf6xyAALVf7TGszGpQmA+7e2h7t26j/IsPMMGSy/NZJceAfgrlwNc/iLHxCU+YVpVxTkYNAg=="
+}
