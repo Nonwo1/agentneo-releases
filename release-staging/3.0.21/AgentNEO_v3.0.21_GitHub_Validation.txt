@@ -1,17 +1,13 @@
 AgentNEO v3.0.21 GitHub Publication Validation
 ==============================================================
 Release asset: AgentNEO_v3.0.21_Update.zip
-Release asset bytes: 36,454,897
-Release asset SHA-256: 8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973
-Deterministic ZIP mode: STORED, fixed DOS timestamp, stable entry order
-Delta reconstruction base: public cumulative v3.0.20 updater
-Delta SHA-256: 24a200ca10ac46c98309981c1c097b15564515dc0dc2790412c4753cf50bd4f1
+Expected release asset bytes: 31,815,940
+Expected release asset SHA-256: 90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b
 
-[PASS] GitHub release updater contains the exact same 286 entry payload contents as the validated v3.0.21 build updater.
+[PASS] Packaged updater ZIP CRC/integrity.
 [PASS] manifest.json version is 3.0.21.
 [PASS] manifest is cumulative from minimum supported version 3.0.11.
-[PASS] Deterministic rebuild from v3.0.20 cumulative asset + v3.0.21 delta is byte-for-byte reproducible.
-[PASS] Rebuilt updater SHA-256 equals published metadata SHA-256.
+[PASS] Complete current updater-managed v3.0.21 payload is included.
 [PASS] Ed25519 latest.json signature generated with the existing AgentNEO release signing key whose public key matches public-key-v1.txt.
 
 CUMULATIVE DIRECT-UPGRADE VALIDATION
@@ -27,4 +23,7 @@ CUMULATIVE DIRECT-UPGRADE VALIDATION
 [PASS] 3.0.19 -> 3.0.21
 [PASS] 3.0.20 -> 3.0.21
 
-FINAL STATUS: PASS — safe to publish after GitHub Actions downloads the created release asset and re-verifies the SHA-256.
+Publication gate:
+The stable root latest.json is promoted only after GitHub Actions downloads AgentNEO_v3.0.21_Update.zip from the v3.0.21 release and verifies the exact SHA-256 above, ZIP integrity, manifest version, cumulative flag and supported baseline metadata.
+
+FINAL STATUS: PACKAGE VALIDATED — release publication remains gated on verification of the exact uploaded GitHub asset.
