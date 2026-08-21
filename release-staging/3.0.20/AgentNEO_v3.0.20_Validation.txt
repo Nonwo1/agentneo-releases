@@ -1,0 +1,43 @@
+AgentNEO v3.0.20 validation report
+==================================
+Built from: AgentNEO v3.0.19 Source Code release package
+Target version: 3.0.20
+
+Implemented fixes
+-----------------
+1. Windows Sandbox runtime authority: a launched/running Windows Sandbox task or a recent real disposable self-test PASS is authoritative readiness evidence when optional-feature/firmware telemetry is UNKNOWN.
+2. Sandbox self-test lifecycle: task registry survives create -> launch -> probe -> PASS recording -> cleanup, preventing the prior 'Unknown sandbox task' race.
+3. Sandbox cleanup: destroy is idempotent, retries transient Windows file-lock errors with bounded exponential backoff, and records cleanup_pending instead of hard-failing if a handle remains locked.
+4. Deterministic Sandbox Lab control: added sandbox_configure_and_test internal service/tool and Supervisor routing so requests to inspect/configure/test AgentNEO Sandbox Lab bypass Prompt Architect and read the actual sandbox registry/state directly.
+5. Contextual retry: short prompts such as 'try again' repeat the sandbox control path when the recent conversation is about Sandbox Lab.
+6. Stream semantic watchdog: visible-content progress is tracked separately from model thinking/metadata, with semantic timeout and hard wall-clock timeout to prevent gpt-oss:20b from occupying the GPU for many minutes at content_chars=0.
+7. Ollama embedding recovery: managed Ollama 127.0.0.1:11435 is preferred when installed; AUTO embedding discovers installed embedding models and tries /api/embed plus legacy /api/embeddings.
+8. v3.0.19 universal microphone/transcription routing remains present in the source and updater payload.
+
+Automated tests
+---------------
+Command: PYTHONPATH=app python -m unittest discover -s tests -p 'test_*.py'
+Result: Ran 200 tests - OK
+
+In-app updater compatibility
+----------------------------
+The final v3.0.20 updater package was inspected and applied by the v3.0.19 UpdateManager against a clean v3.0.19 source tree.
+Result: Update installed and verified
+Changed/applied files: 19
+Installed version: 3.0.20
+Highest version: 3.0.20
+Result: SIMULATION PASS
+
+Package checks
+--------------
+Source package CRC: PASS
+Source MANIFEST_SHA256 verification: PASS
+Full package CRC: PASS
+Signed latest.json verification against AgentNEO trusted release key: PASS
+
+SHA-256
+-------
+AgentNEO_v3.0.20_Source_Code.zip  98abe097e5983f2e24044c642848065fc3a5a5ed310a323a4987967e9640b8dc
+AgentNEO_v3.0.20.zip              98abe097e5983f2e24044c642848065fc3a5a5ed310a323a4987967e9640b8dc
+AgentNEO_v3.0.20_Update.zip       5ff87d9dc99e71ebb333855586960912305d28547b0c2f80296463dbcd4cbaaf
+AgentNEO_v3.0.20_Full_Package.zip 0bf27b44e28d17d52dc132b81824942cbd1675090ca6916483d25d2a09383567
