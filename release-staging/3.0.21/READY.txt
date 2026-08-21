@@ -2,3 +2,4 @@ AgentNEO v3.0.21 release staging ready
 Expected updater asset: AgentNEO_v3.0.21_Update.zip
 Expected updater SHA-256: 90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b
 Stable feed promotion is gated on GitHub release-asset verification.
+Publication trigger: uploaded asset confirmed by user on 2026-08-21.
