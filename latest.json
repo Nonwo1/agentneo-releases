@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.21",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.21/AgentNEO_v3.0.21_Update.zip",
-      "package_sha256": "90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b",
-      "signature": "CuEEjWPRjLsCg1t6NM1k59Oc18SECUewjPrxkLQM9RCiQ/+mWDwq+qDDSIWQ5UPRMu3JgJCYPutQogBuc0cmBQ==",
-      "release_notes": "AgentNEO v3.0.21 introduces task-scoped ChatGPT-style isolation routing: ordinary chat and read-only diagnostics do not open Windows Sandbox; generated/untrusted execution and required file-processing use ephemeral isolated workspaces with offline-by-default networking, hard user constraints and no silent host fallback. The cumulative updater is validated for direct upgrades from v3.0.11 through v3.0.20."
+      "version": "3.0.22",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.22/AgentNEO_v3.0.22_Update.zip",
+      "package_sha256": "653d461311ac40ea6f39e677d092018b482be874845a0666b61e245af2ae8efa",
+      "signature": "Yc625bajMLBfOQP+Ezel6V+HU2CsY4m2I5mBM5YZG5CaugYNGkbU3tDs59KA0+9LVoatz0c5B+Fljt3OPDkqBA==",
+      "release_notes": "AgentNEO v3.0.22 adds deterministic capability-aware diagnostics for all registered agents, role-specific backend tests, bounded continue-on-failure timeouts, read-only health checks without unnecessary sandbox creation, and duplicate runtime-event suppression. The cumulative updater is validated for direct upgrades from v3.0.11 through v3.0.21."
     }
   }
 }
