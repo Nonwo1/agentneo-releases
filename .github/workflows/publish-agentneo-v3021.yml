@@ -1,0 +1,114 @@
+name: Publish AgentNEO v3.0.21
+
+on:
+  push:
+    paths:
+      - "release-staging/3.0.21/READY.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify cumulative updater
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist verify
+          cat release-staging/3.0.21/delta.b64.part00 | tr -d '\r\n\t ' | base64 --decode > dist/v3021-delta.zip
+          echo "24a200ca10ac46c98309981c1c097b15564515dc0dc2790412c4753cf50bd4f1  dist/v3021-delta.zip" | sha256sum --check --strict
+          unzip -t dist/v3021-delta.zip
+
+          curl --fail --location --retry 4 --retry-delay 3 \
+            --output dist/AgentNEO_v3.0.20_Update.zip \
+            "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.20/AgentNEO_v3.0.20_Update.zip"
+          echo "9bca8d2d2f301ba98fb506998d3da9b5fe7842f4bb1dfabea75b64ffdbd7a0c8  dist/AgentNEO_v3.0.20_Update.zip" | sha256sum --check --strict
+
+          python3 release-staging/3.0.21/rebuild-v3021-update.py \
+            dist/AgentNEO_v3.0.20_Update.zip \
+            dist/v3021-delta.zip \
+            dist/AgentNEO_v3.0.21_Update.zip
+
+          echo "8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973  dist/AgentNEO_v3.0.21_Update.zip" | sha256sum --check --strict
+          unzip -t dist/AgentNEO_v3.0.21_Update.zip
+
+          python3 - <<'PY'
+          import json, zipfile
+          with zipfile.ZipFile('dist/AgentNEO_v3.0.21_Update.zip') as z:
+              m=json.loads(z.read('manifest.json'))
+          assert m.get('version') == '3.0.21', m
+          assert m.get('cumulative') is True, m
+          assert m.get('minimum_supported_version') == '3.0.11', m
+          print('manifest validation PASS')
+          PY
+
+      - name: Create or update GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view 3.0.21 >/dev/null 2>&1; then
+            gh release edit 3.0.21 \
+              --title "AgentNEO v3.0.21" \
+              --notes-file release-staging/3.0.21/RELEASE_NOTES_v3.0.21.md
+          else
+            gh release create 3.0.21 \
+              --target main \
+              --title "AgentNEO v3.0.21" \
+              --notes-file release-staging/3.0.21/RELEASE_NOTES_v3.0.21.md
+          fi
+
+          gh release upload 3.0.21 \
+            dist/AgentNEO_v3.0.21_Update.zip \
+            release-staging/3.0.21/SHA256SUMS.txt \
+            release-staging/3.0.21/AgentNEO_v3.0.21_GitHub_Validation.txt \
+            release-staging/3.0.21/AgentNEO_v3.0.21_Cumulative_Validation.txt \
+            release-staging/3.0.21/RELEASE_NOTES_v3.0.21.md \
+            release-staging/3.0.21/latest.json \
+            --clobber
+
+      - name: Verify published updater asset
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release download 3.0.21 \
+            --pattern "AgentNEO_v3.0.21_Update.zip" \
+            --dir verify \
+            --clobber
+          echo "8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973  verify/AgentNEO_v3.0.21_Update.zip" | sha256sum --check --strict
+          unzip -t verify/AgentNEO_v3.0.21_Update.zip
+
+      - name: Promote signed stable feed after asset verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+          cp release-staging/3.0.21/latest.json latest.json
+          cp release-staging/3.0.21/SHA256SUMS.txt SHA256SUMS.txt
+          cp release-staging/3.0.21/README.md README.md
+          cp release-staging/3.0.21/CUMULATIVE_UPDATE_POLICY.md CUMULATIVE_UPDATE_POLICY.md
+          mkdir -p release-notes
+          cp release-staging/3.0.21/RELEASE_NOTES_v3.0.21.md release-notes/v3.0.21.md
+          printf '%s\n' \
+            'AgentNEO v3.0.21 publication verified.' \
+            'Updater SHA-256: 8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973' \
+            'Stable feed promoted only after downloading and re-verifying the GitHub release asset.' \
+            > release-staging/3.0.21/PUBLISHED.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest.json SHA256SUMS.txt README.md CUMULATIVE_UPDATE_POLICY.md release-notes/v3.0.21.md release-staging/3.0.21/PUBLISHED.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish AgentNEO v3.0.21 stable feed [skip ci]"
+            git push origin HEAD:main
+          fi
