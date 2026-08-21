@@ -1,0 +1,3 @@
+AgentNEO v3.0.21 publication verified.
+Updater SHA-256: 90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b
+Stable feed promoted only after downloading and re-verifying the GitHub release asset.
