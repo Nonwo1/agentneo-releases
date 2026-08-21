@@ -1,0 +1,2 @@
+AgentNEO v3.0.20 cumulative updater metadata is ready to replace the earlier incremental metadata after the exact cumulative release asset is confirmed on GitHub.
+Expected SHA-256: 9bca8d2d2f301ba98fb506998d3da9b5fe7842f4bb1dfabea75b64ffdbd7a0c8
