@@ -1,0 +1,1 @@
+The cumulative update builder used for v3.0.20 produces a release ZIP from the complete current updater-managed application payload rather than only the immediately previous version delta. It must be paired with baseline simulation tests before publication. The private release-signing key is never stored in this repository.
