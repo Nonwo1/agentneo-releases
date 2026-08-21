@@ -1,0 +1,119 @@
+AgentNEO v3.0.23 — Revised Speech + Detailed Agent Diagnostics Validation
+============================================================================
+Build: NonBundledHybridSpeechAndDetailedDiagnostics
+Target upgrade: AgentNEO v3.0.22 -> v3.0.23
+Validation environment: isolated Linux build/test environment
+Date: 2026-08-21
+
+IMPLEMENTED IN THIS REVISED v3.0.23 BUILD
+------------------------------------------
+[PASS] Agent health tests resolve assigned backends/models before execution.
+[PASS] Local model-backed agents are grouped by resolved Ollama model.
+[PASS] Each local model is warmed once before all roles assigned to it are probed.
+[PASS] Local keep-alive avoids repeated diagnostic model swapping.
+[PASS] Cold local diagnostic default migrated to 180 seconds.
+[PASS] Resident local diagnostic default migrated to 60 seconds.
+[PASS] API diagnostic default migrated to 45 seconds.
+[PASS] Vision cold/resident budgets are model-aware (180s / 60s defaults).
+[PASS] Infrastructure/inference health is separated from role-compliance health.
+[PASS] Missing marker/unexpected-format responses report ROLE_COMPLIANCE_WARNING instead of inference failure.
+[PASS] Reports include separate Infrastructure Health and Agent Capability Health percentages.
+[PASS] Ollama diagnostics record model load time, TTFT, eval count and tokens/sec when supplied by the backend.
+[PASS] Timeout classification distinguishes MODEL_LOADING_TIMEOUT, RESOURCE_PRESSURE_TIMEOUT and INFERENCE_TIMEOUT.
+[PASS] Timeout post-check inspects Ollama residency and host/GPU resource state.
+[PASS] Voice diagnostic no longer treats provider/model presence as proof that speech works.
+[PASS] Voice diagnostic checks microphone discovery/capture without persisting the recording.
+[PASS] Voice diagnostic validates Faster-Whisper, optional Vosk, selected local TTS rendering, speaker playback and barge-in cancellation where available.
+[PASS] Temporary voice diagnostic audio is removed and is not persistently stored.
+[PASS] Media diagnostic distinguishes unconfigured, installed/stopped, external-unreachable and online ComfyUI states.
+[PASS] Media diagnostic reports server/workflow/model readiness independently.
+[PASS] Recovery Centre exposes START / RESTART for an installed local ComfyUI instance that is stopped.
+[PASS] ComfyUI restart performs no third-party installation or download.
+
+SPEECH STACK RETAINED
+---------------------
+[PASS] Faster-Whisper remains authoritative final local STT.
+[PASS] Optional Vosk provides low-latency partial STT only when explicitly installed.
+[PASS] Optional Kokoro local TTS remains separately installable/removable.
+[PASS] MeloTTS and Qwen VoiceDesign remain selectable and are not silently overridden.
+[PASS] Barge-in keeps microphone capture available while AgentNEO is speaking and can cancel TTS.
+[PASS] Optional speech components/models remain non-bundled.
+
+AUTOMATED SOURCE / REGRESSION TESTS
+-----------------------------------
+[PASS] pytest: 237 passed, 0 failed.
+[PASS] Python source parse/compile validation: 110 files.
+[PASS] JSON parse validation: 86 files.
+[PASS] Command Centre app.js: node --check PASS.
+[PASS] Command Centre app.bundle.js: node --check PASS.
+[PASS] Detailed diagnostic regression suite included.
+
+SOURCE PACKAGE VALIDATION
+-------------------------
+[PASS] Source ZIP CRC.
+[PASS] No __pycache__, .pyc or .pyo artifacts.
+[PASS] No bundled .pt/.pth/.safetensors/.gguf/.onnx/.ckpt AI/model weights.
+[PASS] MANIFEST_SHA256.txt: 380 entries verified against packaged bytes.
+[PASS] Model grouping/single-warmup implementation present.
+[PASS] Separate infrastructure/capability health implementation present.
+[PASS] Role-compliance warning implementation present.
+[PASS] TTFT/tokens-per-second metrics implementation present.
+[PASS] Resource-aware timeout classification present.
+[PASS] Detailed voice hardware diagnostic implementation present.
+[PASS] Explicit local ComfyUI restart implementation present.
+
+UPDATER VALIDATION
+------------------
+[PASS] Update ZIP CRC.
+[PASS] Required internal manifest.json present.
+[PASS] Update format: agentneo-update-v1.
+[PASS] Target version: 3.0.23.
+[PASS] Minimum supported/tested baseline: 3.0.22.
+[PASS] 293 updater-managed replacement payload hashes verified.
+[PASS] Protected settings.json, permissions.json, agents.json and models.json excluded from replacement.
+[PASS] Update package contains no bundled AI/model weights.
+[PASS] Clean v3.0.22 -> v3.0.23 application test using AgentNEO UpdateManager.
+[PASS] UpdateManager preview identified 23 changed files.
+[PASS] UpdateManager applied 23 changed files transactionally.
+[PASS] Post-update installed version: 3.0.23.
+[PASS] Post-update 293 updater-managed files matched expected SHA-256 values.
+[PASS] Protected settings/permissions/agents/models hashes remained unchanged.
+[LIMIT] This updater is validated only from v3.0.22. It is not promoted as the cumulative stable updater for v3.0.11-v3.0.21.
+
+WINDOWS INSTALLER STRUCTURE
+---------------------------
+[PASS] MZ / PE signature.
+[PASS] PE32+ x64 machine (0x8664).
+[PASS] Windows GUI subsystem.
+[PASS] 9 PE sections including .rsrc.
+[PASS] Approved AgentNEO RT_ICON / RT_GROUP_ICON resource payload preserved.
+[PASS] Exact revised v3.0.23 source ZIP embedded in installer.
+
+NON-BUNDLING / COMPLIANCE
+-------------------------
+[PASS] MARK LI/JARVIS source is not copied into AgentNEO.
+[PASS] Vosk/Kokoro model weights are not redistributed in AgentNEO.
+[PASS] Optional components remain user-initiated installations/downloads.
+[PASS] ComfyUI restart only operates on an already-installed local copy and performs no third-party download.
+[PASS] No reusable TLS private key or external assistant certificate introduced.
+
+LIMITATIONS
+-----------
+The build environment cannot access the target Windows microphone, speakers, RTX GPU,
+Ollama model store, configured API credentials or local ComfyUI instance. The new detailed
+agent/voice/media diagnostic must therefore be run on the target Windows machine after installation.
+The installer is not Authenticode-signed in this build environment.
+
+RESULT
+------
+Automated regression tests: 237/237 PASS
+Package/feature validation checks: PASS
+Updater integration test: PASS (v3.0.22 -> v3.0.23)
+Overall build validation: PASS
+
+ARTIFACT SHA-256
+----------------
+c3a1fb4f6ebbc7f8ca7e11eefb2c4e27b41fb20210f05ac032ca9ef6c319aed5  AgentNEO_v3.0.23_Source_Code.zip
+63da09d3b3427bb254cc2bc9837dde20b0e1f1077fab0f3c158359b2c773e765  AgentNEO_v3.0.23_Update_from_3.0.22.zip
+379e29b5e7151c9983e2c6dcc7e9ceb7d94c91ccb8a77ff1753be757c5c3ef8f  AgentNEO_v3.0.23_Full_Installer.exe
+b90756d015a9a0ffe2ee86beb2392b808596196f2092d0687dca99cd124291cf  AgentNEO_v3.0.23_Full_Installer_Package.zip
