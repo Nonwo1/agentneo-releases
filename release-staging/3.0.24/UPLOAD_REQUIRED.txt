@@ -1,0 +1,27 @@
+AgentNEO v3.0.24 manual release binary upload checklist
+======================================================
+
+Repository metadata, release notes, validation and checksums are staged in GitHub.
+
+Attach these exact binary assets to the GitHub v3.0.24 Release:
+
+1. AgentNEO_v3.0.24_Update_from_3.0.23.zip
+   SHA-256: 2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d
+
+2. AgentNEO_v3.0.24_Source_Code.zip
+   SHA-256: 0a957243e6450678d09672e4a97c06b2d081131b1c05e7f040cd39690b5d23a3
+
+3. AgentNEO_v3.0.24_Full_Installer.exe
+   SHA-256: 96641b58a2f4e2f716095612eed35c8012c02ebd7176cdf67821df6de9a95bc9
+
+4. AgentNEO_v3.0.24_Full_Installer_Package.zip
+   SHA-256: f917e5757a9d515504b01fe7248b5847d0246e9242d2edd0b9b536919c09a58b
+
+5. AgentNEO_v3.0.24_Validation.txt
+   SHA-256: 1762f60ba3a98db10e5be7911525eb5fbc41278c477773af696b19210725609e
+
+IMPORTANT
+---------
+- v3.0.24 updater is validated from AgentNEO v3.0.23 only.
+- Do not replace the signed stable `latest.json` feed with v3.0.24 until cumulative baseline validation and publisher signing are complete.
+- The current stable in-app feed remains v3.0.22.
