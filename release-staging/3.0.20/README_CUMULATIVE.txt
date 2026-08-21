@@ -1,0 +1,1 @@
+This staging directory documents the cumulative v3.0.20 updater publication. The public stable feed must reference the exact uploaded AgentNEO_v3.0.20_Update.zip whose SHA-256 is 9bca8d2d2f301ba98fb506998d3da9b5fe7842f4bb1dfabea75b64ffdbd7a0c8. Do not recompress or modify that release asset after signing.
