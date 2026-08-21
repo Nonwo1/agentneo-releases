@@ -13,9 +13,9 @@ Every stable AgentNEO updater must support direct upgrades from every declared s
 7. Publication must stop if any supported baseline fails.
 8. The release asset is uploaded before `latest.json` is changed. The published SHA-256 and Ed25519 signature must match the exact uploaded ZIP bytes.
 
-## v3.0.20 support matrix
+## v3.0.21 support matrix
 
-The cumulative v3.0.20 updater was validated for direct upgrades from:
+The cumulative v3.0.21 updater was validated for direct upgrades from:
 
 - v3.0.11
 - v3.0.12
@@ -26,5 +26,6 @@ The cumulative v3.0.20 updater was validated for direct upgrades from:
 - v3.0.17
 - v3.0.18
 - v3.0.19
+- v3.0.20
 
-All supported baselines above are intended to converge directly to v3.0.20 without installing intermediate releases individually.
+All supported baselines above converge directly to v3.0.21 without installing intermediate releases individually.
