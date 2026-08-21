@@ -8,7 +8,7 @@ Official public distribution repository for AgentNEO release packages and update
 - In-app updater: `AgentNEO_v3.0.21_Update.zip`
 - Update type: **cumulative**
 - Supported direct upgrade baselines for v3.0.21: `3.0.11` through `3.0.20`
-- SHA-256: `8f343fa8f7679208dd4aabc548db41158671dc0589ec566619d9773968193973`
+- SHA-256: `90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b`
 - Stable feed: `latest.json`
 - Release notes: `release-notes/v3.0.21.md`
 
