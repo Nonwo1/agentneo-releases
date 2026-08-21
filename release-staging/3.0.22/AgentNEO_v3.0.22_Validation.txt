@@ -1,0 +1,28 @@
+AgentNEO v3.0.22 Release Validation
+==================================
+Version: 3.0.22
+Build: CapabilityAwareAgentDiagnostics
+
+PASS: Python source compilation completed for 106 Python files.
+PASS: Complete automated regression suite: 222/222 tests passed.
+PASS: Capability-aware diagnostics cover all 18 registered agents, specialist backend routing, continue-after-timeout, cancellation, role-specific prompts and NOT_APPLICABLE accounting.
+PASS: Same-thread duplicate runtime-event suppression is covered while high-frequency telemetry remains deliverable.
+PASS: Source ZIP CRC and MANIFEST_SHA256 verification completed.
+PASS: Full-agent requests bypass repeated Supervisor re-planning and execute through AgentDiagnosticRunner.
+PASS: Standard all-agent diagnostic is read-only and does not automatically create/open Windows Sandbox.
+PASS: Memory uses embedding health; Voice uses STT/TTS/backend readiness; Media uses non-generating backend health; Screen Monitor uses in-memory capture; Vision uses an in-memory image.
+PASS: Local diagnostics use bounded timeouts, compact inference settings, model keep-alive and one transient retry.
+PASS: FAIL/TIMEOUT results are recorded and diagnostics continue.
+PASS: Cumulative updater format agentneo-update-v1; version 3.0.22; minimum supported version 3.0.11.
+PASS: Complete current updater-managed payload contains 289 replace records and 0 delete records.
+PASS: Protected user/runtime paths are excluded from the updater payload.
+PASS: Updater CRC and per-payload hashes verified.
+PASS: Direct upgrade simulations passed from every baseline v3.0.11 through v3.0.21 using each baseline's real UpdateManager.
+PASS: All 289 current managed files converged exactly and protected state was preserved.
+PASS: Windows installer structural validation passed for PE32+ x64 GUI payload and AgentNEO icon resources.
+NOTE: Native Windows/WPF/Windows-Sandbox execution cannot be performed in the Linux packaging environment.
+
+Updater SHA-256: 653d461311ac40ea6f39e677d092018b482be874845a0666b61e245af2ae8efa
+Full installer SHA-256: 2c3e773ef2251b4b600dca2c71f5ba3d056dbe013b2256030253bc2255052dc0
+
+VALIDATION RESULT: PASS
