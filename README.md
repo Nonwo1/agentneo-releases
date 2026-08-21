@@ -2,7 +2,19 @@
 
 Official public distribution repository for AgentNEO release packages and update metadata.
 
-## Current stable release
+## Current manual release
+
+- Version: `3.0.23`
+- Manual updater baseline: **v3.0.22 only**
+- Release notes: `release-notes/v3.0.23.md`
+- Validation: `release-staging/3.0.23/AgentNEO_v3.0.23_Validation.txt`
+- Checksums: `release-staging/3.0.23/SHA256SUMS.txt`
+
+v3.0.23 adds the non-bundled hybrid speech stack and revised model-aware detailed-agent diagnostics. It adds optional Vosk live partial STT, optional Kokoro local TTS, improved barge-in handling, real voice hardware/STT/TTS diagnostics, grouped Ollama model warm-up, separate infrastructure/capability health, better timeout classification, and clearer ComfyUI diagnostics/restart handling.
+
+The v3.0.23 updater has been validated with the real AgentNEO UpdateManager from a clean v3.0.22 baseline. It is **not** currently represented as a cumulative updater from v3.0.11-v3.0.21.
+
+## Current stable in-app release
 
 - Version: `3.0.22`
 - In-app updater: `AgentNEO_v3.0.22_Update.zip`
@@ -12,8 +24,6 @@ Official public distribution repository for AgentNEO release packages and update
 - Stable feed: `latest.json`
 - Release notes: `release-notes/v3.0.22.md`
 
-v3.0.22 adds deterministic capability-aware diagnostics for all registered agents. It uses role-specific backend tests, bounded continue-on-failure timeouts, read-only health checks, and duplicate runtime-event suppression. Normal all-agent diagnostics do not open Windows Sandbox; the task-scoped isolation protocol remains active when isolated execution is actually required.
+The signed public `latest.json` feed intentionally remains on v3.0.22 until v3.0.23 has completed older-baseline cumulative-update validation and the normal signing/publisher gate.
 
-Stable updater packages are cumulative. v3.0.22 was validated with the real UpdateManager from every supported baseline v3.0.11 through v3.0.21 while preserving protected user/runtime data.
-
-Clients verify the exact updater SHA-256 and Ed25519 publisher signature before installation.
+Clients using the stable in-app updater verify the exact updater SHA-256 and Ed25519 publisher signature before installation.
