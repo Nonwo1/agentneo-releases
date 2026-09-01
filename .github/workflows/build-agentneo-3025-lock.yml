@@ -1,0 +1,33 @@
+name: Build AgentNEO 3.0.25 dependency lock
+
+on:
+  push:
+    branches:
+      - build/3.0.25-lock
+    paths:
+      - 'build-lock/python-requirements-v3.0.25.in'
+      - '.github/workflows/build-agentneo-3025-lock.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resolve-lock:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.10.0'
+      - name: Resolve hashed Windows Python 3.12 lock
+        shell: pwsh
+        run: |
+          uv pip compile build-lock/python-requirements-v3.0.25.in --output-file build-lock/python-requirements-v3.0.25.lock --generate-hashes --python-version 3.12 --python-platform windows --no-emit-index-url
+          if (-not (Select-String -Path build-lock/python-requirements-v3.0.25.lock -Pattern '--hash=sha256:[0-9a-f]{64}')) { throw 'Resolved lock has no SHA-256 hashes.' }
+      - name: Upload lock artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentneo-3.0.25-python-lock
+          path: build-lock/python-requirements-v3.0.25.lock
+          if-no-files-found: error
