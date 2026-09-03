@@ -1,31 +1,20 @@
-# AgentNEO Cumulative Update Policy
+# AgentNEO Cumulative Stable Update Policy
 
-Every stable AgentNEO updater must support direct upgrades from every declared supported baseline to the target release. Stable updaters are built from the complete current updater-managed application payload rather than only the delta from the immediately previous version.
+Every stable AgentNEO updater must support a direct update from every declared supported baseline to the target release. A stable updater is built from the complete current updater-managed application payload, not only the delta from the immediately previous release.
 
-## Required release contract
+## Required contract
 
-1. The manifest declares the target version, that the package is cumulative, the minimum supported version, and the baseline versions tested.
-2. The package contains all updater-managed files required to converge a supported older installation to the target release.
-3. Required delete/migration actions from intermediate releases are carried forward where still applicable.
-4. User-owned data remains protected unless an explicit versioned migration requires otherwise. Protected data includes settings, permissions, credentials/API keys, local models, memories, runtimes, workspaces, outputs and other user data.
-5. Before publication, the exact release ZIP is tested with the real UpdateManager from every supported baseline.
-6. Each baseline must pass package inspection, transactional apply, final file hashes, required deletions/migrations, protected-data preservation and final version synchronization.
-7. Publication must stop if any supported baseline fails.
-8. The release asset is uploaded before `latest.json` is changed. The published SHA-256 and Ed25519 signature must match the exact uploaded ZIP bytes.
+1. Keep the backward-compatible `agentneo-update-v1` format unless the minimum supported client is intentionally raised.
+2. Declare `cumulative`, `cumulative_from`, `minimum_supported_version`, and the complete tested baseline list.
+3. Include every current updater-managed file required to converge an older supported installation to the target release.
+4. Include delete actions for updater-managed files that existed in a supported baseline but no longer exist in the target release.
+5. Never replace protected user/runtime state such as settings, permissions, credentials/API keys, model stores, memories, runtimes, workspaces, outputs, logs and user data.
+6. Test the exact updater bytes with the real UpdateManager from every supported baseline.
+7. Verify transactional apply, final current-file hashes, required deletions, version synchronization, and protected-state preservation for every baseline.
+8. Stop publication if any supported baseline fails.
+9. Upload the exact updater asset before promoting `latest.json`.
+10. Download the published GitHub asset again and verify its SHA-256/ZIP/manifest before promoting the signed stable feed.
 
-## v3.0.21 support matrix
+## v3.0.22 supported baseline
 
-The cumulative v3.0.21 updater was validated for direct upgrades from:
-
-- v3.0.11
-- v3.0.12
-- v3.0.13
-- v3.0.14
-- v3.0.15
-- v3.0.16
-- v3.0.17
-- v3.0.18
-- v3.0.19
-- v3.0.20
-
-All supported baselines above converge directly to v3.0.21 without installing intermediate releases individually.
+v3.0.22 retains v3.0.11 as the minimum supported cumulative baseline and was validated for direct upgrades from every release v3.0.11 through v3.0.21.
