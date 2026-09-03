@@ -1,0 +1,66 @@
+AgentNEO 3.0.26 Final Validation Report
+=======================================
+
+Release purpose
+---------------
+Focused repair for Resource Governor fairness and diagnostic scheduling.
+No changes to agent roles, prompts, model assignments, AgentNEO/AgentSMITH brain behaviour, or the multi-agent task graph.
+
+Runtime / regression validation
+-------------------------------
+[PASS] Full unittest suite: 235 / 235 tests
+[PASS] Python source parse: 114 files, 0 failures
+[PASS] JSON parse: 89 files, 0 failures
+[PASS] Command Centre app.js syntax
+[PASS] Command Centre app.bundle.js syntax
+[PASS] Source manifest: 394 / 394 SHA-256 entries verified
+[PASS] Python dependency lock: 979 SHA-256 package hashes
+[PASS] No __pycache__, .pyc or .pyo files in source package
+
+Resource Governor repair validation
+-----------------------------------
+[PASS] FIFO inference waiter scheduling
+[PASS] Resource lease owner/model/age visibility
+[PASS] All-agent diagnostic uses Resource Governor for model-backed probes
+[PASS] Memory resource-slot timeout is not retried as an Ollama endpoint failure
+[PASS] Resource-pressure waits retain a bounded deadline
+[PASS] Starvation regression test for queued Memory/Voice-style workloads
+
+Selective updater validation
+----------------------------
+Formal baseline: AgentNEO 3.0.25
+Target: AgentNEO 3.0.26
+[PASS] Actual 3.0.25 UpdateManager inspect_package()
+[PASS] Actual 3.0.25 UpdateManager apply_package()
+[PASS] 18 installed files changed
+[PASS] 300 / 300 updater-managed target hashes verified after apply
+[PASS] Forbidden config targets: none
+[PASS] settings.json preserved byte-for-byte
+[PASS] permissions.json preserved byte-for-byte
+[PASS] agents.json preserved byte-for-byte
+[PASS] models.json preserved byte-for-byte
+
+Additional stable-feed compatibility verification
+-------------------------------------------------
+The exact published 3.0.26 updater bytes were also applied successfully with the real AgentNEO 3.0.22, 3.0.23 and 3.0.24 UpdateManagers during GitHub feed synchronization.
+[PASS] 3.0.22 -> 3.0.26: 41 files changed; 300/300 managed hashes verified; protected config preserved
+[PASS] 3.0.23 -> 3.0.26: 37 files changed; 300/300 managed hashes verified; protected config preserved
+[PASS] 3.0.24 -> 3.0.26: 27 files changed; 300/300 managed hashes verified; protected config preserved
+Note: the package manifest itself remains authoritative and formally declares 3.0.25 as the supported baseline.
+
+Packaging / installer validation
+--------------------------------
+[PASS] Source ZIP CRC validation
+[PASS] Updater ZIP CRC validation
+[PASS] Windows installer built as AgentNEO 3.0.26 Installer.exe
+[PASS] Existing AgentNEO Windows bootstrap/icon/resource layout preserved during installer rebuild
+[PASS] Embedded 3.0.26 installer payload opened successfully with Go archive/zip semantics
+[PASS] Release-specific dependency lock present in installer payload
+[PASS] No AI/media model weights bundled
+[PASS] No NVIDIA CUDA runtime DLLs bundled
+
+Published GitHub asset
+----------------------
+Asset: AgentNEO.3.0.26.zip
+SHA-256: fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6
+GitHub release digest matches the validated updater bytes.
