@@ -2,12 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.24",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.24/AgentNEO_v3.0.24_Update_from_3.0.23.zip",
-      "package_sha256": "2e53d623c4780812c9ff86546dd30a8c513dc9b147a2ca85b88bf66b91a8669d",
-      "signature": "rByMIOPWIB9DVo1W4i0q/yllhgk9E6dS2sf36/oYPK8WR9lFAarGFGnfV4r1JDduz+rNKgP34lw8fcuuPeCUDA==",
-      "minimum_supported_version": "3.0.23",
-      "release_notes": "AgentNEO 3.0.24 adds activity-aware long-task execution, stream/context/token progress monitoring, improved model diagnostics, corrected idle/ready status handling, ComfyUI launch/readiness controls, automatic media model presets, workflow discovery/generation, and pre-submit ComfyUI workflow validation. This updater is validated from AgentNEO 3.0.23."
+      "version": "3.0.21",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.21/AgentNEO_v3.0.21_Update.zip",
+      "package_sha256": "90d1fcb01b56482a928b1eac8485a37e3af604e111428cfdf8473d23926be65b",
+      "signature": "CuEEjWPRjLsCg1t6NM1k59Oc18SECUewjPrxkLQM9RCiQ/+mWDwq+qDDSIWQ5UPRMu3JgJCYPutQogBuc0cmBQ==",
+      "release_notes": "AgentNEO v3.0.21 introduces task-scoped ChatGPT-style isolation routing: ordinary chat and read-only diagnostics do not open Windows Sandbox; generated/untrusted execution and required file-processing use ephemeral isolated workspaces with offline-by-default networking, hard user constraints and no silent host fallback. The cumulative updater is validated for direct upgrades from v3.0.11 through v3.0.20."
     }
   }
 }
