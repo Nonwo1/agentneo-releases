@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.26",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.26/AgentNEO.3.0.26.zip",
+      "package_sha256": "fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6",
+      "signature": "5ihvsNU+IE1QBAA3AuCN/V1qscno9ZZdqGHQB7aBRaLnkDsizKCjbv+NEJMfY5PyGo+lgf2/qcKmDNd+SVqZDg==",
+      "release_notes": "AgentNEO 3.0.26 fixes Resource Governor fairness and diagnostic scheduling: FIFO inference waiters, visible lease ownership, governor-aware diagnostic probes, bounded resource waits, and correct Memory handling of resource-slot timeouts. It preserves the 3.0.25 GPT-OSS, Ollama endpoint and CUDA speech-runtime repairs. The selective updater is validated from AgentNEO 3.0.25."
+    }
+  }
+}
