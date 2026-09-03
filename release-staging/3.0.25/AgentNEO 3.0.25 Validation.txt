@@ -1,0 +1,48 @@
+AgentNEO 3.0.25 — Corrected Release Validation
+================================================
+
+Release status: PASS
+Target selective-updater baseline: AgentNEO 3.0.24
+
+ROOT-CAUSE CORRECTION
+---------------------
+The initially distributed 3.0.25 updater incorrectly targeted protected config/python-requirements-v3.0.25.in and .lock files. AgentNEO 3.0.24 correctly rejected that package.
+
+The corrected updater excludes those installer/source-only dependency files. Its manifest contains no protected config targets other than the allowed release-lock.json and runtime-lock.json.
+
+REAL 3.0.24 UPDATE COMPATIBILITY
+--------------------------------
+[PASS] Package inspected with the actual AgentNEO 3.0.24 UpdateManager
+[PASS] Clean AgentNEO 3.0.24 -> 3.0.25 transactional apply
+[PASS] 23 installed files changed
+[PASS] 299 updater-managed targets verified against manifest SHA-256 after apply
+[PASS] config/settings.json preserved byte-for-byte
+[PASS] config/permissions.json preserved byte-for-byte
+[PASS] config/agents.json preserved byte-for-byte
+[PASS] config/models.json preserved byte-for-byte
+[PASS] No python-requirements-v3.0.25.in/.lock target exists in selective updater
+[PASS] No __pycache__ or .pyc files in selective updater
+
+REGRESSION / SOURCE VALIDATION
+------------------------------
+[PASS] 251/251 pytest regression tests
+[PASS] 113 Python files parse
+[PASS] 89 JSON files parse
+[PASS] Command Centre app.js passes node --check
+[PASS] Command Centre app.bundle.js passes node --check
+[PASS] Source archive contains no __pycache__/.pyc artifacts
+[PASS] 390/390 source MANIFEST_SHA256.txt entries verified
+[PASS] Python 3.0.25 dependency lock contains 979 SHA-256 package hashes
+
+INSTALLER VALIDATION
+--------------------
+[PASS] PE32+ Windows x86-64 GUI executable
+[PASS] .rsrc section SHA-256 matches AgentNEO 3.0.24 installer byte-for-byte
+[PASS] 3.0.25 full installer/source retain the versioned dependency input and cryptographically pinned lock
+[PASS] Selective updater does not attempt to overwrite those protected dependency config files
+
+PUBLISHED GITHUB ASSET
+----------------------
+Asset: AgentNEO.3.0.25.zip
+SHA-256: 07b7f35f2143712943796a383e5d0c388b810683cfa0b0332449ce8b59bf087d
+GitHub release digest matches the validated updater bytes.
