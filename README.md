@@ -1,19 +1,31 @@
 # AgentNEO Releases
 
-Official public distribution repository for AgentNEO release packages and update metadata.
+Official public distribution repository for AgentNEO release packages and signed update metadata.
 
 ## Current stable release
 
-- Version: `3.0.22`
-- In-app updater: `AgentNEO_v3.0.22_Update.zip`
-- Update type: **cumulative**
-- Supported direct upgrade baselines: `3.0.11` through `3.0.21`
-- SHA-256: `653d461311ac40ea6f39e677d092018b482be874845a0666b61e245af2ae8efa`
+- Version: `3.0.26`
+- In-app updater asset: `AgentNEO.3.0.26.zip`
+- SHA-256: `fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6`
 - Stable feed: `latest.json`
-- Release notes: `release-notes/v3.0.22.md`
+- Release notes: `release-notes/v3.0.26.md`
+- Formal package baseline: `3.0.25`
 
-v3.0.22 adds deterministic capability-aware diagnostics for all registered agents. It uses role-specific backend tests, bounded continue-on-failure timeouts, read-only health checks, and duplicate runtime-event suppression. Normal all-agent diagnostics do not open Windows Sandbox; the task-scoped isolation protocol remains active when isolated execution is actually required.
+AgentNEO 3.0.26 repairs Resource Governor fairness and diagnostic scheduling while preserving the working 3.0.25 GPT-OSS, Ollama endpoint and CUDA speech-runtime fixes.
 
-Stable updater packages are cumulative. v3.0.22 was validated with the real UpdateManager from every supported baseline v3.0.11 through v3.0.21 while preserving protected user/runtime data.
+## Recent update chain
 
-Clients verify the exact updater SHA-256 and Ed25519 publisher signature before installation.
+### 3.0.25
+
+- Updater asset: `AgentNEO.3.0.25.zip`
+- SHA-256: `07b7f35f2143712943796a383e5d0c388b810683cfa0b0332449ce8b59bf087d`
+- Validated baseline: `3.0.24`
+
+### 3.0.26
+
+- Updater asset: `AgentNEO.3.0.26.zip`
+- SHA-256: `fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6`
+- Formal validated baseline: `3.0.25`
+- Additional direct compatibility verification with the exact published updater also passed using the real `3.0.22`, `3.0.23` and `3.0.24` UpdateManagers. The package manifest remains authoritative and formally declares `3.0.25`.
+
+Clients verify the exact updater SHA-256 and Ed25519 publisher signature before installation. Historical version-specific publisher workflows have been retired so an older release cannot overwrite the current stable feed.
