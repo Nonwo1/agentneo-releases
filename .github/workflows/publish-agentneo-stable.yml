@@ -1,0 +1,108 @@
+name: Publish AgentNEO stable feed
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "AgentNEO release version, for example 3.0.26"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve and verify staged signed feed
+        id: feed
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="${{ github.event.release.tag_name }}"
+          fi
+          STAGE="release-staging/${VERSION}"
+          test -f "${STAGE}/latest.json"
+          test -f "${STAGE}/SHA256SUMS.txt"
+
+          python3 - "$VERSION" "$STAGE" <<'PY'
+          import json, pathlib, sys, urllib.parse
+          version, stage = sys.argv[1], pathlib.Path(sys.argv[2])
+          feed = json.loads((stage/'latest.json').read_text())
+          assert feed.get('format') == 'agentneo-update-feed-v1', feed
+          release = feed['channels']['stable']
+          assert release['version'] == version, release
+          url = release['package_url']
+          parsed = urllib.parse.urlparse(url)
+          assert parsed.scheme == 'https' and parsed.netloc == 'github.com', url
+          assert f'/releases/download/{version}/' in parsed.path, url
+          digest = release['package_sha256'].lower()
+          assert len(digest) == 64 and all(c in '0123456789abcdef' for c in digest), digest
+          assert isinstance(release.get('signature'), str) and len(release['signature']) > 40
+          asset = pathlib.PurePosixPath(parsed.path).name
+          pathlib.Path('/tmp/agentneo-version').write_text(version)
+          pathlib.Path('/tmp/agentneo-asset').write_text(asset)
+          pathlib.Path('/tmp/agentneo-sha').write_text(digest)
+          PY
+
+          VERSION="$(cat /tmp/agentneo-version)"
+          ASSET="$(cat /tmp/agentneo-asset)"
+          SHA="$(cat /tmp/agentneo-sha)"
+          gh release view "$VERSION" >/dev/null
+          rm -rf verify && mkdir verify
+          gh release download "$VERSION" --pattern "$ASSET" --dir verify --clobber
+          echo "$SHA  verify/$ASSET" | sha256sum --check --strict
+          unzip -t "verify/$ASSET"
+          python3 - "$VERSION" "verify/$ASSET" <<'PY'
+          import json, sys, zipfile
+          version, package = sys.argv[1], sys.argv[2]
+          with zipfile.ZipFile(package) as z:
+              manifest = json.loads(z.read('manifest.json'))
+          assert manifest.get('format') == 'agentneo-update-v1', manifest
+          assert manifest.get('version') == version, manifest
+          print(f'AgentNEO {version} published updater verification PASS')
+          PY
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Promote verified signed stable feed
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.feed.outputs.version }}"
+          STAGE="release-staging/${VERSION}"
+          git pull --rebase origin main
+          cp "${STAGE}/latest.json" latest.json
+          python3 - "$STAGE" <<'PY'
+          import pathlib, sys
+          stage = pathlib.Path(sys.argv[1])
+          current = pathlib.Path('SHA256SUMS.txt')
+          new_lines = [x for x in (stage/'SHA256SUMS.txt').read_text().splitlines() if x.strip()]
+          old_lines = [x for x in current.read_text().splitlines() if x.strip()] if current.exists() else []
+          names = {line.split(None, 1)[1] for line in new_lines if len(line.split(None, 1)) == 2}
+          merged = new_lines + [line for line in old_lines if len(line.split(None, 1)) != 2 or line.split(None, 1)[1] not in names]
+          current.write_text('\n'.join(merged) + '\n')
+          PY
+          printf '%s\n' \
+            "AgentNEO ${VERSION} publication verified by generic stable publisher." \
+            "Published updater re-downloaded, SHA-256 verified and ZIP/manifest validated before feed promotion." \
+            > "${STAGE}/PUBLISHED.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest.json SHA256SUMS.txt "${STAGE}/PUBLISHED.txt"
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish AgentNEO ${VERSION} stable feed [skip ci]"
+            git push origin HEAD:main
+          fi
