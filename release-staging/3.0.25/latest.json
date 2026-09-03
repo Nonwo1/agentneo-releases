@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.25",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.25/AgentNEO.3.0.25.zip",
+      "package_sha256": "07b7f35f2143712943796a383e5d0c388b810683cfa0b0332449ce8b59bf087d",
+      "signature": "qcliK4fzreO8DGymkPhNAF3yFjRkzD4tzjeVYo/omAA517sS0fHknIkwZXJv1MsF2NcCbI2GjI2n6QlSw0QKCQ==",
+      "release_notes": "AgentNEO 3.0.25 fixes GPT-OSS reasoning/output handling, same-model Ollama endpoint recovery, CUDA 12 speech-runtime repair, release dependency locking and security hardening. The selective updater is validated from AgentNEO 3.0.24."
+    }
+  }
+}
