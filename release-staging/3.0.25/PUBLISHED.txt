@@ -1,0 +1,5 @@
+AgentNEO 3.0.25 publication verified.
+Updater asset: AgentNEO.3.0.25.zip
+Updater SHA-256: 07b7f35f2143712943796a383e5d0c388b810683cfa0b0332449ce8b59bf087d
+GitHub release digest matches the validated updater package.
+Signed feed snapshot uses the configured AgentNEO Ed25519 publisher key.
