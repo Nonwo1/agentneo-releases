@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.29",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.29/AgentNEO_v3.0.29_Update_from_v3.0.28.zip",
+      "package_sha256": "75336210afa6f639e7a2b8b4202c027353873ece40282c72d98e63a291647c69",
+      "signature": "RFJA4G85CyqOFTfM1dS1QZtTVLioxp/H4L9PR1lwkKlgcy/2x+/cvHKDIohCV9FOPNgbTaP5kMdkzYoy5SkfDg==",
+      "release_notes": "AgentNEO 3.0.29 isolates ComfyUI CUDA/cuDNN from AgentNEO speech CUDA paths, adds one-click FIX CUDA/cuDNN recovery with a real GPU convolution self-test, and preserves v3.0.28 model-tuning controls. The formal selective-updater baseline is 3.0.28; direct compatibility from 3.0.26 and 3.0.27 was additionally verified against the exact published 3.0.29 updater."
+    }
+  }
+}
