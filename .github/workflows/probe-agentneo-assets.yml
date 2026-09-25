@@ -29,6 +29,8 @@ jobs:
             gh release view 3.0.28 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
             echo '3.0.27:'
             gh release view 3.0.27 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+            echo '3.0.26:'
+            gh release view 3.0.26 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
           } > release-staging/PROBE_CURRENT_RESULT.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
