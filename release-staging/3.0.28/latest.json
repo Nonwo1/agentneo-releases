@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.28",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.28/AgentNEO_v3.0.28_Update_from_v3.0.27.zip",
+      "package_sha256": "d28bbf63a078d9a9d7bbe4336422928b56f504a19b9c0eef439859164e445caf",
+      "signature": "7kRRSgcZ+5Vnp5UPYxbo3GWqItWxDt1dKjBSYpfu2n5RBP72uoBdTGQYSlQ9QnR0WAPDtygQVQq9PaOm126wBg==",
+      "release_notes": "AgentNEO 3.0.28 adds LM Studio-inspired reasoning, sampling, RAG, context, model-residency and activity-aware timeout controls, and removes the duplicate Voice defaults group from Settings. The formal selective-updater baseline is 3.0.27."
+    }
+  }
+}
