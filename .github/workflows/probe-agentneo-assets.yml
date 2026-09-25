@@ -3,7 +3,7 @@ name: Probe AgentNEO release assets
 on:
   push:
     paths:
-      - 'release-staging/PROBE_3020.txt'
+      - 'release-staging/PROBE_CURRENT.txt'
   workflow_dispatch:
 
 permissions:
@@ -23,15 +23,15 @@ jobs:
           set -euo pipefail
           mkdir -p release-staging
           {
-            echo '3.0.19:'
-            gh release view 3.0.19 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
-            echo '3.0.18:'
-            gh release view 3.0.18 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
-            echo '3.0.17:'
-            gh release view 3.0.17 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
-          } > release-staging/PROBE_3020_RESULT.txt
+            echo '3.0.29:'
+            gh release view 3.0.29 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+            echo '3.0.28:'
+            gh release view 3.0.28 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+            echo '3.0.27:'
+            gh release view 3.0.27 --repo "${{ github.repository }}" --json assets --jq '.assets[].name' || true
+          } > release-staging/PROBE_CURRENT_RESULT.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add release-staging/PROBE_3020_RESULT.txt
-          git commit -m 'Probe AgentNEO release assets for 3.0.20 build' || true
+          git add release-staging/PROBE_CURRENT_RESULT.txt
+          git commit -m 'Probe AgentNEO release assets for current releases' || true
           git push
