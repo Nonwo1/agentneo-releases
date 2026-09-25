@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "AgentNEO release version, for example 3.0.26"
+        description: "AgentNEO release version, for example 3.0.29"
         required: true
         type: string
 
