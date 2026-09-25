@@ -1,0 +1,14 @@
+AgentNEO 3.0.27 publication validation
+======================================
+
+Published asset SHA-256:
+2aff9fbc19105254ffab49412466acd33d25b42046ab02fb478612422da68df7  AgentNEO.3.0.27.zip
+
+[PASS] Local exact package bytes match the GitHub-published release digest.
+[PASS] ZIP CRC test.
+[PASS] manifest.json format/version: agentneo-update-v1 / 3.0.27.
+[PASS] Formal manifest baseline: 3.0.26.
+[PASS] Real 3.0.26 UpdateManager inspection and transaction.
+[PASS] 17 changed files applied.
+[PASS] Final installed version: 3.0.27.
+[PASS] Updater-managed final hashes: 0 mismatches.
