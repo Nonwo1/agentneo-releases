@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.27",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.27/AgentNEO.3.0.27.zip",
+      "package_sha256": "2aff9fbc19105254ffab49412466acd33d25b42046ab02fb478612422da68df7",
+      "signature": "EDFVmXPo6a7mADr27zg3ohXQ+cOAVX6af6zBj4095wYYjipeBia/0ZlkIjpg6yel9Nv41DWwFZuZKMzCwwngBQ==",
+      "release_notes": "AgentNEO 3.0.27 adds live system introspection and evidence-grounded agent/model inventory across reachable local Ollama endpoints. The formal selective-updater baseline is 3.0.26."
+    }
+  }
+}
