@@ -2,11 +2,11 @@
   "format": "agentneo-update-feed-v1",
   "channels": {
     "stable": {
-      "version": "3.0.26",
-      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.26/AgentNEO.3.0.26.zip",
-      "package_sha256": "fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6",
-      "signature": "5ihvsNU+IE1QBAA3AuCN/V1qscno9ZZdqGHQB7aBRaLnkDsizKCjbv+NEJMfY5PyGo+lgf2/qcKmDNd+SVqZDg==",
-      "release_notes": "AgentNEO 3.0.26 fixes Resource Governor fairness and diagnostic scheduling: FIFO inference waiters, visible lease ownership, governor-aware diagnostic probes, bounded resource waits, and correct Memory handling of resource-slot timeouts. It preserves the 3.0.25 GPT-OSS, Ollama endpoint and CUDA speech-runtime repairs. The selective updater is validated from AgentNEO 3.0.25."
+      "version": "3.0.29",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.29/AgentNEO_v3.0.29_Update_from_v3.0.28.zip",
+      "package_sha256": "75336210afa6f639e7a2b8b4202c027353873ece40282c72d98e63a291647c69",
+      "signature": "RFJA4G85CyqOFTfM1dS1QZtTVLioxp/H4L9PR1lwkKlgcy/2x+/cvHKDIohCV9FOPNgbTaP5kMdkzYoy5SkfDg==",
+      "release_notes": "AgentNEO 3.0.29 isolates ComfyUI CUDA/cuDNN from AgentNEO speech CUDA paths, adds one-click FIX CUDA/cuDNN recovery with a real GPU convolution self-test, and preserves v3.0.28 model-tuning controls. The formal selective-updater baseline is 3.0.28; direct compatibility from 3.0.26 and 3.0.27 was additionally verified against the exact published 3.0.29 updater."
     }
   }
 }
