@@ -1,0 +1,1 @@
+AgentNEO 3.0.30 publication verified against GitHub release assets.\nPublished updater digest matches the signed stable feed.\nWindows update, Full Install and post-install launch smoke tests passed.\n
