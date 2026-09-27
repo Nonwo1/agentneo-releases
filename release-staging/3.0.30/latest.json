@@ -1,0 +1,12 @@
+{
+  "format": "agentneo-update-feed-v1",
+  "channels": {
+    "stable": {
+      "version": "3.0.30",
+      "package_url": "https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Update.zip",
+      "package_sha256": "0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0",
+      "signature": "eLHb988qZSh9aSW503EpJJY7RQr/bTjIUcTgLDCAx/yOcIgDqc/I8TQ0FDINgK6jCJHPzIrU/NhggN9wqVOuBg==",
+      "release_notes": "AgentNEO 3.0.30 Community Edition is the first public community-testing release built from the stable 3.0.29 base. It introduces the open-source/community licensing presentation, protects the Neural Brain Galaxy under its separate asset licence, consolidates release history into CHANGELOG.txt, fixes Full Install and Repair/Upgrade behaviour, fixes installer legal/UI text, and fixes fresh-install launching from paths containing spaces. The exact 3.0.29 to 3.0.30 updater and clean Full Install were both validated on Windows and AgentNEO launched successfully after each."
+    }
+  }
+}
