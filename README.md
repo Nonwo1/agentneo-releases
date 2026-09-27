@@ -10,21 +10,31 @@ This release is the beginning of community testing. Use AgentNEO, experiment wit
 
 ## Download AgentNEO v3.0.30
 
-**New users**
+### New users
 
-[⬇ Download AgentNEO v3.0.30 Installer](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Installer.exe)
+[⬇ Download AgentNEO v3.0.30 Installer RAR](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Installer.rar)
 
-**Existing AgentNEO v3.0.29 users**
+Extract the RAR, then run the included AgentNEO installer.
+
+### Existing AgentNEO v3.0.29 users
 
 [⬇ Download the v3.0.30 Update](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Update.zip)
 
-**Developers / contributors**
+### Developers / contributors
 
 [⬇ Download the v3.0.30 Source Package](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Source.zip)
 
 [View the complete v3.0.30 release](https://github.com/Nonwo1/agentneo-releases/releases/tag/3.0.30)
 
-> **Important:** GitHub's green **Code → Download ZIP** button always downloads a snapshot of this repository. GitHub does not allow that built-in button to be redirected to the AgentNEO installer. Use the installer link above or the **Releases** section on the right side of this page.
+## Green Code → Download ZIP
+
+GitHub's green **Code → Download ZIP** button downloads the contents of the current repository branch. To make that path useful for non-technical users, this repository now keeps the current full installer archive in:
+
+`FULL_PROGRAM_DOWNLOAD/AgentNEO_v3.0.30_Installer.rar`
+
+So when somebody uses **Code → Download ZIP**, the downloaded repository ZIP includes the current AgentNEO installer RAR. Extract the GitHub ZIP, open `FULL_PROGRAM_DOWNLOAD`, extract the RAR, and run the installer.
+
+For the quickest download, use the direct installer link above.
 
 ## What is AgentNEO?
 
@@ -52,7 +62,7 @@ The final v3.0.30 build was exercised on Windows:
 
 ### Published SHA-256
 
-- Installer: `a8b4418cc0457eacf80bc07d95b7556655910c757e81fee7ae4fc5acd8be8748`
+- Installer RAR: `8ee266153c54a6d98d9fc73ad963281a9d2db36ba416aa7bb4c88f5d23658f5f`
 - Updater: `0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0`
 - Source: `ec0d56a63d31ab7433723820811bb46d33a1fcb41af60123e8a71f4d67e9332a`
 
