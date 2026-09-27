@@ -1,20 +1,54 @@
-# AgentNEO Releases
+# AgentNEO Community Edition
 
-Official public distribution repository for **AgentNEO Community Edition** release packages and signed update metadata.
+## AgentNEO is now available for public testing
 
-## Current stable release — 3.0.30
+After a long period of development, rebuilding, testing and debugging, **AgentNEO v3.0.30 Community Edition** is now available for the wider community to download, explore, test and help improve.
 
-AgentNEO v3.0.30 is the first public Community Edition release intended for wider testing, bug reports, feature ideas and community contributions.
+AgentNEO is a Windows x64 multi-agent AI environment built around its interactive **Neural Brain Galaxy Command Centre**. It combines local and linked online AI models, specialist agents, memory and knowledge systems, permission-gated tools, voice and screen interaction, Media/ComfyUI integration, sandboxing, recovery tooling and an integrated update system in one desktop application.
 
-AgentNEO is a Windows x64 multi-agent AI environment built around the interactive **Neural Brain Galaxy Command Centre**, with local/online model routing, specialist agents, memory/knowledge, permission-gated tools, voice and screen interaction, Media/ComfyUI integration, sandboxing, recovery tooling and verified selective updates.
+This release is the beginning of community testing. Use AgentNEO, experiment with it, report bugs, suggest ideas, improve workflows and help shape future releases.
 
-### Downloads
+## Download AgentNEO v3.0.30
 
-- Full installer: `AgentNEO_v3.0.30_Installer.exe`
-- Existing v3.0.29 users: `AgentNEO_v3.0.30_Update.zip`
-- Community source: `AgentNEO_v3.0.30_Source.zip`
-- Stable update feed: `latest.json`
-- Release information: `release-notes/v3.0.30.md`
+**New users**
+
+[⬇ Download AgentNEO v3.0.30 Installer](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Installer.exe)
+
+**Existing AgentNEO v3.0.29 users**
+
+[⬇ Download the v3.0.30 Update](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Update.zip)
+
+**Developers / contributors**
+
+[⬇ Download the v3.0.30 Source Package](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Source.zip)
+
+[View the complete v3.0.30 release](https://github.com/Nonwo1/agentneo-releases/releases/tag/3.0.30)
+
+> **Important:** GitHub's green **Code → Download ZIP** button always downloads a snapshot of this repository. GitHub does not allow that built-in button to be redirected to the AgentNEO installer. Use the installer link above or the **Releases** section on the right side of this page.
+
+## What is AgentNEO?
+
+AgentNEO includes an interactive 3D Neural Brain Galaxy Command Centre, AgentNEO and AgentSMITH dual-brain architecture, specialist AI agents, local and linked online model routing, configurable model inference controls, persistent memory and knowledge, Prompt Architect, Voice Assistant, screen interaction, Media/ComfyUI integration, permission-gated PC/system tools, Sandbox Lab, Recovery Centre, Update Centre and plugin/API support.
+
+## Community Edition licensing
+
+AgentNEO original core code is released under **GNU AGPL v3 or later**.
+
+The original **AgentNEO Neural Brain Galaxy** visual design and identified Galaxy/brand assets remain separately protected under the bundled AgentNEO Neural Brain Galaxy Community Asset Licence. The Galaxy may be used as part of AgentNEO Community Edition under that licence, but it is not licensed for extraction, resale, rebranding or use as the signature interface of another product without permission.
+
+Third-party components remain under their respective licences. A future paid edition does not revoke rights already granted to a published Community Edition release.
+
+## v3.0.30 validation
+
+The final v3.0.30 build was exercised on Windows:
+
+- v3.0.29 → v3.0.30 update: **PASS**
+- AgentNEO launch after update: **PASS**
+- clean Full Install into a new folder: **PASS**
+- launch from the new desktop shortcut: **PASS**
+- installation path containing spaces: **PASS**
+- automated regression tests: **284 passed**
+- updater-managed final hash mismatches: **0**
 
 ### Published SHA-256
 
@@ -22,41 +56,20 @@ AgentNEO is a Windows x64 multi-agent AI environment built around the interactiv
 - Updater: `0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0`
 - Source: `ec0d56a63d31ab7433723820811bb46d33a1fcb41af60123e8a71f4d67e9332a`
 
-## Community Edition licensing
+## Help test AgentNEO
 
-AgentNEO original core code is released under **GNU AGPL v3 or later**.
-
-The original **AgentNEO Neural Brain Galaxy** visual design and identified Galaxy/brand assets remain separately protected under the bundled AgentNEO Neural Brain Galaxy Community Asset Licence. Third-party components remain under their respective licences.
-
-A future paid edition does not revoke rights already granted to a published Community Edition release.
-
-## v3.0.30 validation
-
-The final v3.0.30 build has been exercised on the target Windows system:
-
-- v3.0.29 → v3.0.30 updater: PASS.
-- AgentNEO launch after update: PASS.
-- clean Full Install into a new folder: PASS.
-- launch from the new desktop shortcut: PASS.
-- automated regression tests: 284 passed.
-- updater-managed final hash mismatches: 0.
-
-The updater feed is signed with AgentNEO's existing Ed25519 publisher key and the exact GitHub-published updater digest is verified before feed promotion.
-
-## Recent chain
-
-| Release | Formal update baseline | Updater SHA-256 |
-|---|---|---|
-| 3.0.30 | 3.0.29 | `0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0` |
-| 3.0.29 | 3.0.28 | `75336210afa6f639e7a2b8b4202c027353873ece40282c72d98e63a291647c69` |
-| 3.0.28 | 3.0.27 | `d28bbf63a078d9a9d7bbe4336422928b56f504a19b9c0eef439859164e445caf` |
-| 3.0.27 | 3.0.26 | `2aff9fbc19105254ffab49412466acd33d25b42046ab02fb478612422da68df7` |
-| 3.0.26 | 3.0.25 | `fb38c504ca77df4cdf220204e07a8ad01d1a302ae1235416afdd7ac335851ad6` |
-
-## Public testing
-
-Bug reports, reproducible diagnostics, feature ideas and contributions are welcome through GitHub Issues.
+Bug reports, reproducible diagnostics, screenshots, feature ideas and contributions are welcome through GitHub Issues. Please remove API keys, passwords and other private information before posting logs publicly.
 
 Contact: **no_nwo1@protonmail.com**
 
-> The Windows installer is not yet signed with a publicly trusted Authenticode certificate, so Windows SmartScreen may display an Unknown Publisher warning.
+## Windows SmartScreen
+
+The current Windows installer is not yet signed with a publicly trusted Authenticode certificate, so Windows may display an **Unknown Publisher / SmartScreen** warning. The SHA-256 values above can be used to verify the exact published files.
+
+---
+
+Current stable release: **AgentNEO v3.0.30 Community Edition**
+
+Stable update feed: `latest.json`  
+Consolidated history: `CHANGELOG.txt`  
+Release information: `release-notes/v3.0.30.md`
