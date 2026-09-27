@@ -4,9 +4,11 @@
 
 ### New installation
 
-[Download AgentNEO_v3.0.30_Installer.exe](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Installer.exe)
+[Download AgentNEO_v3.0.30_Installer.rar](https://github.com/Nonwo1/agentneo-releases/releases/download/3.0.30/AgentNEO_v3.0.30_Installer.rar)
 
-SHA-256: `a8b4418cc0457eacf80bc07d95b7556655910c757e81fee7ae4fc5acd8be8748`
+SHA-256: `8ee266153c54a6d98d9fc73ad963281a9d2db36ba416aa7bb4c88f5d23658f5f`
+
+Extract the RAR and run the included installer.
 
 ### Update an existing v3.0.29 installation
 
@@ -20,8 +22,8 @@ SHA-256: `0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0`
 
 SHA-256: `ec0d56a63d31ab7433723820811bb46d33a1fcb41af60123e8a71f4d67e9332a`
 
-## About GitHub's Code → Download ZIP button
+## Code → Download ZIP
 
-The green **Code → Download ZIP** control is built into GitHub. It always creates and downloads an archive of the repository branch currently being viewed. Repository owners cannot repoint that button to an installer, RAR, release asset or another file.
+GitHub's green **Code → Download ZIP** downloads this repository. The current repository also contains the installer RAR under `FULL_PROGRAM_DOWNLOAD`, so the repository ZIP includes the full installer archive as requested.
 
-Use the release links above for AgentNEO installation files.
+For the quickest install, use the direct RAR link above.
