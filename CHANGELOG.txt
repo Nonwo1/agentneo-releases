@@ -1,0 +1,21 @@
+AgentNEO CHANGELOG
+==================
+
+v3.0.30 — Community Edition
+---------------------------
+- First public community-testing release.
+- AgentNEO original core code moved to an AGPL-3.0-or-later community/open-source model.
+- Neural Brain Galaxy visual design and identified Galaxy/brand assets remain separately protected under the bundled Community Asset Licence.
+- Reworked Legal & Licences content for Community Edition use.
+- Added contact address no_nwo1@protonmail.com.
+- Removed old public-commercial-readiness material from the user-facing legal page.
+- Consolidated in-app release history into one CHANGELOG.txt.
+- Corrected installer legal/notice text, stale versions and corrupted characters.
+- Full Install now performs a clean rebuild from packaged defaults.
+- Repair / Upgrade preserves user state and only repairs/replaces required packaged files.
+- Fixed installer model-policy verification with preserved user model assignments.
+- Fixed Full Install preflight verification.
+- Fixed installer controls/acceptance layout and post-install details behaviour.
+- Fixed fresh-install launch failure when the installation path contains spaces.
+- Preserved v3.0.29 ComfyUI CUDA/cuDNN isolation and recovery functionality.
+- Final Windows validation: update PASS, Full Install PASS, launch after both paths PASS.
