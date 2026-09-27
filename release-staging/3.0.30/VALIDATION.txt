@@ -1,0 +1,46 @@
+AgentNEO v3.0.30 Community Edition — Published Release Validation
+================================================================
+
+Published GitHub release assets
+-------------------------------
+[PASS] AgentNEO_v3.0.30_Installer.exe
+       SHA-256: a8b4418cc0457eacf80bc07d95b7556655910c757e81fee7ae4fc5acd8be8748
+[PASS] AgentNEO_v3.0.30_Source.zip
+       SHA-256: ec0d56a63d31ab7433723820811bb46d33a1fcb41af60123e8a71f4d67e9332a
+[PASS] AgentNEO_v3.0.30_Update.zip
+       SHA-256: 0905351ca96e3973594d0a6f62b53dbde552365f22e38f64bdf6ed2d7eaf2ee0
+
+Engineering validation
+----------------------
+[PASS] Application/config/release/runtime version = 3.0.30.
+[PASS] Python regression suite: 284 passed.
+[PASS] Python source compile: PASS.
+[PASS] Command Centre JavaScript syntax: PASS.
+[PASS] JSON parse checks: PASS.
+[PASS] Runtime manifest: 237/237 verified.
+[PASS] Source manifest: 286/286 verified.
+[PASS] ZIP CRC/integrity checks: PASS.
+[PASS] Fresh-package privacy audit: PASS.
+[PASS] Base package contains no AI model weights.
+[PASS] Exact v3.0.29 UpdateManager accepted/applied the v3.0.30 updater.
+[PASS] Updater-managed final hash mismatches: 0.
+
+Windows smoke validation
+------------------------
+[PASS] Real v3.0.29 -> v3.0.30 update completed successfully on Windows.
+[PASS] AgentNEO launched successfully after the update.
+[PASS] Full Install completed successfully into a new installation folder.
+[PASS] AgentNEO launched successfully from the newly created desktop shortcut.
+[PASS] Fresh-install launcher handles installation paths containing spaces.
+
+Publisher/update-feed validation
+--------------------------------
+[PASS] GitHub-published updater digest matches the exact validated package.
+[PASS] Stable feed package URL points to the published 3.0.30 updater asset.
+[PASS] Stable feed metadata is Ed25519-signed with the existing AgentNEO update key.
+[PASS] Signature verifies against public-key-v1.txt.
+
+Known distribution note
+-----------------------
+The Windows installer is not yet Authenticode-signed by a publicly trusted publisher.
+Windows SmartScreen may therefore show an Unknown Publisher warning.
