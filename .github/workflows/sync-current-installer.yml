@@ -1,0 +1,74 @@
+name: Sync current AgentNEO installer into repository
+
+on:
+  push:
+    paths:
+      - 'FULL_PROGRAM_SYNC_TRIGGER.txt'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "AgentNEO release version"
+        required: true
+        default: "3.0.30"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  sync-installer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="$(tr -d '\r\n ' < FULL_PROGRAM_SYNC_TRIGGER.txt)"
+          fi
+          test -n "$VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Download exact published installer archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          ASSET="AgentNEO_v${VERSION}_Installer.rar"
+          URL="https://github.com/${{ github.repository }}/releases/download/${VERSION}/${ASSET}"
+          mkdir -p FULL_PROGRAM_DOWNLOAD
+          curl -fL "$URL" -o "FULL_PROGRAM_DOWNLOAD/${ASSET}"
+          if [[ "$VERSION" == "3.0.30" ]]; then
+            echo "8ee266153c54a6d98d9fc73ad963281a9d2db36ba416aa7bb4c88f5d23658f5f  FULL_PROGRAM_DOWNLOAD/${ASSET}" | sha256sum --check --strict
+          fi
+
+      - name: Keep only current installer archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          ASSET="AgentNEO_v${VERSION}_Installer.rar"
+          find FULL_PROGRAM_DOWNLOAD -maxdepth 1 -type f -name 'AgentNEO_v*_Installer.rar' ! -name "$ASSET" -delete
+
+      - name: Commit installer archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.version.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add FULL_PROGRAM_DOWNLOAD
+          if git diff --cached --quiet; then
+            echo "Installer archive already synchronized."
+            exit 0
+          fi
+          git commit -m "Add AgentNEO v${VERSION} full installer archive"
+          git push origin HEAD:main
